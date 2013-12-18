@@ -41,7 +41,7 @@ include "php/form.php";
 	echo '<br>' . $type . '<br><br>';
 
 	//hämtar data som genereras av frågan
-	while ( $rest = mysql_fetch_assoc($x) )
+	while ( $rest = mysql_fetch_assoc($x) ){
 
 		foreach ($rest as $key => $value) {
 
@@ -66,7 +66,7 @@ include "php/form.php";
 		
 		echo '<br>';
 	}*/
-	
+
 	mysql_free_result($x);
 
 ?>
