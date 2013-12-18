@@ -37,18 +37,29 @@ include "php/form.php";
 	echo 'Number of Rows ' .  mysql_num_rows($x) . '<br><br>';
 	var_dump(mysql_fetch_array($x));
 
+
 	echo '<br>' . '<br>' . $tablename . '<br>';
 	echo '<br>' . $type . '<br><br>';
-
+	
+	$i = 0;
 	//hämtar data som genereras av frågan
-	while ( $rest = mysql_fetch_assoc($x) ){
-
-		foreach ($rest as $key => $value) {
-
-			echo ' ' . $value . ' ';
-		}
-			echo '<br>';
+	echo "<table>";
+		while ( $rest = mysql_fetch_assoc($x) ){
+			$array_length = count($rest);
+		    echo "<tr>";
+				foreach ($rest as $key => $value){
+					if ($i < $array_length){
+						echo "<td>" . $key . "</td>" ;	
+					}else{
+				    	echo "<td>" . $value . "</td>" ;
+				    }							
+			    $i++;
+				}
+		echo "</tr>"; 
 	}
+	echo "</table>";
+	
+
 /*	
 	while ( $rest = mysql_fetch_row($x) ) {
 
