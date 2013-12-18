@@ -47,10 +47,16 @@ footer {
 	width: 94%;
 	padding: 1%;
 }
-table, th, td, tr {
-		border: 1px solid black;
-		margin-left: 20px;
-		padding: 5px;
+
+table, th, td {
+	background-color: #FFFFFF;
+	border: 1px solid black;
+	border-collapse:collapse;
+	margin: 5px;
+	padding: 5px;
+}
+th {
+	background-color:#FFFFFF;
 }
 
 .cf:before,

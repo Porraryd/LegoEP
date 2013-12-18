@@ -40,7 +40,7 @@ include "php/form.php";
 
 	echo '<br>' . '<br>' . $tablename . '<br>';
 	echo '<br>' . $type . '<br><br>';
-	
+
 	$i = 0;
 	//hämtar data som genereras av frågan
 	echo "<table>";
@@ -49,7 +49,7 @@ include "php/form.php";
 		    echo "<tr>";
 				foreach ($rest as $key => $value){
 					if ($i < $array_length){
-						echo "<td>" . $key . "</td>" ;	
+						echo "<th>" . $key . "</th>" ;	
 					}else{
 				    	echo "<td>" . $value . "</td>" ;
 				    }							
