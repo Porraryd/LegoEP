@@ -1,15 +1,26 @@
 body {
-	background-color: #ddd;
+	background-color: white;
 	font-family: 'Comic sans', sans-serif;
 }
 
 .wrapper {
-	width: 80%;
-	margin: 20px auto;
+	max-width: 800px;
+	min-width: 200px;
+	margin: 10px auto;
+	border: 1px solid hsl(100, 0%, 80%);
+	box-shadow: 2px 2px 1px #888888;
 }
 
 header {
 	text-align: center;
+	border: 1px solid hsl(100, 0%, 80%);
+	box-shadow: 2px 2px 1px #888888;
+}
+footer {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	font-size: 8pt;
+
 }
 
 .row {
@@ -35,7 +46,6 @@ header {
 .threethirds {
 	width: 94%;
 	padding: 1%;
-	background: red;
 }
 
 .cf:before,
