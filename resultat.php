@@ -31,7 +31,7 @@ include "php/form.php";
 
 	//Skickar frågan till connect_db
 	//AND $type = '$search' 
-	$x = query("SELECT * FROM $tablename WHERE 1 ");
+	$x = query("SELECT * FROM $tablename WHERE 1 AND $type LIKE '%{$search}%' LIMIT 50");
 
 	//information om vad som man får tillbaka från frågan
 	echo 'Number of Rows ' .  mysql_num_rows($x) . '<br><br>';
@@ -45,7 +45,7 @@ include "php/form.php";
 
 		foreach ($rest as $key => $value) {
 
-			echo $key . ' ' . $value . ' ';
+			echo ' ' . $value . ' ';
 		}
 			echo '<br>';
 	}
