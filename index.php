@@ -1,8 +1,10 @@
 <?php
 include "templates/header.php";
-include "php/form.php";
 ?>
 			<main class="wrapper">
+			<?php
+			include "php/form.php";
+			?>
 				<div class="row cf">
 	
 				</div>
