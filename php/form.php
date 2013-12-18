@@ -1,5 +1,5 @@
 				
-			
+			<div id="form">
 					<form action="resultat.php" method="post"> 
 						
 						<input type="text" name="search"> 
@@ -9,4 +9,6 @@
 						<input type="radio" name="type" value="PartID" autocomplete="off">PartID
 						<input type="radio" name="type" value="Colorname" autocomplete="off">Color
 					</form>
+			</div>
+
 			

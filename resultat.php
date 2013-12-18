@@ -17,7 +17,7 @@ include "templates/header.php";
 				$type   = $_POST['type'];
 
 				//koppla val med tabell
-				$keys = array('SetID' => 'inventory',
+				$keys = array('SetID' => 'sets',
 							  'Setname' => 'sets',
 						  	  'PartID' => 'parts',
 						  	  'Colorname' => 'colors');
@@ -39,10 +39,6 @@ include "templates/header.php";
 				echo 'Number of Rows ' .  mysql_num_rows($x) . '<br><br>';
 				var_dump(mysql_fetch_array($x));
 
-
-				echo '<br>' . '<br>' . $tablename . '<br>';
-				echo '<br>' . $type . '<br><br>';
-
 				$i = 0;
 				//hämtar data som genereras av frågan
 				echo "<table>";
@@ -60,25 +56,6 @@ include "templates/header.php";
 					echo "</tr>"; 
 				}
 				echo "</table>";
-				
-
-			/*	
-				while ( $rest = mysql_fetch_row($x) ) {
-
-					echo '<br>';
-					foreach ($rest as $key => $value) {
-						//echo $key . ' ';
-						echo $value . ' ';
-					}
-					echo '<br>';
-				}*/
-			/*	while ( $rest = mysql_fetch_assoc($x) ) {
-						
-					echo '<br>';
-						echo $rest[$type] . ' ';
-					
-					echo '<br>';
-				}*/
 
 				mysql_free_result($x);
 
