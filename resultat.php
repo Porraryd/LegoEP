@@ -24,10 +24,8 @@ include "templates/header.php";
 
 				//Leta reda på rätt tabell
 				foreach ($keys as $key => $value) {
-
 					if ($type == $key){
 						$tablename = $value;
-						echo $tablename . '<br>';
 					}
 				}
 
@@ -36,7 +34,8 @@ include "templates/header.php";
 				$x = query("SELECT * FROM $tablename WHERE 1 AND $type LIKE '%{$search}%' LIMIT 50");
 
 				//information om vad som man får tillbaka från frågan
-				echo 'Number of Rows ' .  mysql_num_rows($x) . '<br><br>';
+				echo 'Working in table: ' . $tablename . '<br>';
+				echo 'Number of Rows: ' .  mysql_num_rows($x) . '<br>';
 				var_dump(mysql_fetch_array($x));
 
 				$i = 0;
