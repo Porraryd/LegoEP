@@ -2,9 +2,12 @@
 
 	function connect ($db){
 
+
 		////används för att ansluta till databasen lokat
 		//$conn = mysql_connect('localhost','root','');
+		////används för att ansluta till databasen på liu server
 		$conn = mysql_connect("mysql.itn.liu.se","lego");
+
 
 		if ( !$conn ){
 			echo 'Felet ' . mysql_error();

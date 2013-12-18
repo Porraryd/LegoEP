@@ -22,17 +22,19 @@ include "templates/form.php";
 
 	//Leta reda på rätt tabell
 	foreach ($keys as $key => $value) {
-		if  ($type == $key){
+
+		if ($type == $key){
 			$table = $value;
 			echo $table . '<br>';
 		}
 	}
+
 	//Skickar frågan till connect_db
 	$x = query("SELECT * FROM `$table`");
 
-
 	echo mysql_num_rows($x);
 	var_dump(mysql_fetch_array($x));
+
 
 	echo '<br>';
 
@@ -56,10 +58,12 @@ include "templates/form.php";
 		echo '<br>';
 	}
 
+
 //echo $rest['$table'] .'<br>';
 //		echo $rest['ColorID'] . '<br>'.
 //			 $rest['Colortype'] . '<br>' . 
 //			 $rest['Colorname'] . '<br>';
+
 	
 	//mysql_free_result();
 
