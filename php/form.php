@@ -4,10 +4,8 @@
 						
 						<input type="text" name="search"> 
 						<input type="submit" value="Submit"><br>
-						<input type="radio" name="type" value="SetID" autocomplete="off" checked='checked'>SetID
-						<input type="radio" name="type" value="Setname" autocomplete="off">Setname
-						<input type="radio" name="type" value="PartID" autocomplete="off">PartID
-						<input type="radio" name="type" value="Colorname" autocomplete="off">Color
+						<input type="radio" name="type" value="sets" autocomplete="off" checked='checked'>Sets
+						<input type="radio" name="type" value="parts" autocomplete="off">Parts
 					</form>
 			</div>
 

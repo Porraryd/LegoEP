@@ -17,10 +17,8 @@ include "templates/header.php";
 				$type   = $_GET['type'];
 
 				//koppla val med tabell
-				$keys = array('SetID' => 'sets',
-							  'Setname' => 'sets',
-						  	  'PartID' => 'parts',
-						  	  'Colorname' => 'colors');
+				$keys = array('sets' => 'sets',
+							  'parts' => 'parts');
 
 				//Leta reda på rätt tabell
 				foreach ($keys as $key => $value) {
@@ -41,7 +39,7 @@ include "templates/header.php";
 
  //Skickar frågan till connect_db
 				//AND $type = '$search' 
-	$x = query("SELECT * FROM $tablename WHERE 1 AND $type LIKE '%{$search}%' LIMIT $start_from, $ITEMS_PER_PAGE ");
+	$x = query("SELECT * FROM $tablename WHERE 1 AND (Setname LIKE '%{$search}%' OR SetID LIKE '%{$search}%') LIMIT $start_from, $ITEMS_PER_PAGE ");
 
 						//information om vad som man får tillbaka från frågan
 				echo 'Working in table: ' . $tablename . '<br>';
@@ -66,7 +64,7 @@ include "templates/header.php";
 				echo "</table>";
 
 	//Query för att räkna hur många objekt som finns. BÖR ÄNDRAS TILL ETT COUNT()-kommando för att optimera. 
-	$countquery = query("SELECT * FROM $tablename WHERE 1 AND $type LIKE '%{$search}%'");
+	$countquery = query("SELECT * FROM $tablename WHERE 1 AND (Setname LIKE '%{$search}%' OR SetID LIKE '%{$search}%')");
 	$totalcount = mysql_num_rows($countquery);
 	echo 'Number of Rows ' .  $totalcount . '<br><br>';
 
