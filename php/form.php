@@ -1,6 +1,6 @@
 				
 			<div id="form">
-					<form action="resultat.php" method="post"> 
+					<form action="resultat.php" method="get"> 
 						
 						<input type="text" name="search"> 
 						<input type="submit" value="Submit"><br>
