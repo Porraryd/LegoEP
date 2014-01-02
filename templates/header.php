@@ -19,5 +19,7 @@
 
 				<nav>
 					<a href="index.php">Hem</a>
+					<a href="contact.php">Contact</a>
+ -          		<a href="help.php">Help</a>
 				</nav>
 			</header>
