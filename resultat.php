@@ -41,45 +41,60 @@ include "templates/header.php";
 				//AND $type = '$search' 
 	$x = query("SELECT * FROM $tablename WHERE 1 AND (Setname LIKE '%{$search}%' OR SetID LIKE '%{$search}%') LIMIT $start_from, $ITEMS_PER_PAGE ");
 
-						//information om vad som man får tillbaka från frågan
-				echo 'Working in table: ' . $tablename . '<br>';
-				echo 'Number of Rows: ' .  mysql_num_rows($x) . '<br>';
-				var_dump(mysql_fetch_array($x));
-				$i = 0;
-				//hämtar data som genereras av frågan
-				echo "<table>";
-					while ( $rest = mysql_fetch_assoc($x) ){
-						$array_length = count($rest);
-					    echo "<tr>";
-							foreach ($rest as $key => $value){
-								if ($i < $array_length){
-									echo "<th>" . $key . "</th>" ;	
-								}else{
-							    	echo "<td>" . $value . "</td>" ;
-							    }							
-						    $i++;
-							}
-					echo "</tr>"; 
-				}
-				echo "</table>";
+	//Kontroll att resultat hittades
+	if(count($x) > 0)
+	{					//information om vad som man får tillbaka från frågan
+		echo 'Working in table: ' . $tablename . '<br>';
+		echo 'Number of Rows: ' .  mysql_num_rows($x) . '<br>';
+		//var_dump(mysql_fetch_array($x));
+		$i = 0;
+		
+		//hämtar data som genereras av frågan
+		//Skapar tabell med informationen
+		echo "<table>";
+		while ( $rest = mysql_fetch_assoc($x) )
+		{
+		    echo "<tr>";
+		    if ($i == 0)
+		    {
+		    	//OM vi är i första rundan ska även table headers ingå
+		    	foreach ($rest as $key => $value)
+		    		echo "<th>" . $key . "</th>";
+		    	echo "</tr><tr>";
+		    }
 
-	//Query för att räkna hur många objekt som finns. BÖR ÄNDRAS TILL ETT COUNT()-kommando för att optimera. 
-	$countquery = query("SELECT * FROM $tablename WHERE 1 AND (Setname LIKE '%{$search}%' OR SetID LIKE '%{$search}%')");
-	$totalcount = mysql_num_rows($countquery);
-	echo 'Number of Rows ' .  $totalcount . '<br><br>';
+			foreach ($rest as $key => $value)
+			{
+		    	echo "<td><a href='set.php?id=" . $rest["SetID"] . "'>" . $value . "</a></td>" ;						
+		    	$i++;
+			}
+			echo "</tr>"; 
+		}
+		echo "</table>";
 
-	//Räknar hur många sidor det ska vara totalt
-	$total_pages = ceil($totalcount / 20);
-	
-	//Loop som skapar länkar till varje sida. 
-	//TODO: Sätta någon maxgräns på hur många sidor som visas? Eller bara sätta pilar?
-	for ($i=1; $i<=$total_pages; $i++)
-	{
-		echo "<a href='resultat.php?search=" . $search . "&type=" . $type . "&page=" . $i . "'>" . $i . "</a> "; 
+		//Query för att räkna hur många objekt som finns. BÖR ÄNDRAS TILL ETT COUNT()-kommando för att optimera. 
+		$countquery = query("SELECT * FROM $tablename WHERE 1 AND (Setname LIKE '%{$search}%' OR SetID LIKE '%{$search}%')");
+		$totalcount = mysql_num_rows($countquery);
+		echo 'Found ' .  $totalcount . ' items.<br><br>';
+
+		//Räknar hur många sidor det ska vara totalt
+		$total_pages = ceil($totalcount / 20);
+		
+		//Loop som skapar länkar till varje sida. 
+		//TODO: Sätta någon maxgräns på hur många sidor som visas? Eller bara sätta pilar?
+		for ($i=1; $i<=$total_pages; $i++)
+		{
+			echo "<a href='resultat.php?search=" . $search . "&type=" . $type . "&page=" . $i . "'>" . $i . "</a> "; 
+		}
+					mysql_free_result($x);
+
+				
 	}
-				mysql_free_result($x);
-
-			?>
+	else
+	{
+		echo "Your search did not yield any results.";
+	}
+	?>
 	</div>
 	</main>
 
