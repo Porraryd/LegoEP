@@ -3,9 +3,10 @@
 					<form action="resultat.php" method="get"> 
 						
 						<input type="text" name="search"> 
-						<input type="submit" value="Search!"><br>
-						<input type="radio" name="type" value="sets" autocomplete="off" checked='checked'>Sets 
-						<input type="radio" name="type" value="parts" autocomplete="off">Parts
+						<input type="submit" value="Submit"><br>
+						<input type="radio" name="type" value="SetID" autocomplete="off" checked='checked'>SetID
+						<input type="radio" name="type" value="Setname" autocomplete="off">Setname
+						<input type="radio" name="type" value="PartID" autocomplete="off">PartID
 					</form>
 			</div>
 
