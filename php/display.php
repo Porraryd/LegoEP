@@ -16,11 +16,12 @@
           		$i=0;
 	        	echo "<tr>";
 	                    foreach ($rest as $key => $value){
-	                    	if($key == 'SetID'){
+	                    	if($key == 'SetID' || $key == 'PartID'){
 	                    		list($url1, $url2) = load_image($value);
 		                    }
 
                     		$i++;
+                    		//echo $url2 . '<br>';
 
 	                    	if($i == $length ){
 		                    	echo "<td>" . $value . "</td>";

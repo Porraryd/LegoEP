@@ -18,15 +18,33 @@ include "templates/header.php";
 				$search = $_GET["SetID"];
 			
 			//Hittar det SET vi ska visa. 
-			$x = query("SELECT * FROM sets WHERE 1 AND SetID = '$search'");
-
+			//$x = query("SELECT * FROM sets WHERE 1 AND SetID = '$search'");
+			$x = query("SELECT parts.Partname, parts.PartID, inventory.Quantity
+						FROM inventory 
+						JOIN colors
+						ON inventory.colorID = colors.ColorID 
+						JOIN sets
+						ON inventory.SetID = sets.SetID
+						JOIN parts
+						ON inventory.ItemID = parts.PartID
+						WHERE 1
+						AND sets.SetID='$search'
+						ORDER BY `inventory`.`Quantity`  DESC 
+						LIMIT 100");
 			//Kontroll att resultat hittades
 			if(count($x) > 0){
 
-				$setassoc = mysql_fetch_assoc($x);
+				/*$setassoc = mysql_fetch_assoc($x);
 
 				echo "Setname: " . $setassoc["Setname"] . "<br>"; 
-				echo "SetID: " . $setassoc["SetID"]; 
+				echo "SetID: " . $setassoc["SetID"]; */
+
+				echo "<table>";
+				//vilka rubriker som ska visas
+				$headarray = array("Partname", "PartID", "Quantity", "Pics");
+				//funktion som visar resultatet från sökningen som en tabell
+				display_table($x, $headarray);
+				echo "</table>";
 
 				mysql_free_result($x);
 						
