@@ -7,6 +7,8 @@
 		<link type="text/css" rel="stylesheet" href="css/normalize.css"></link>
 		<link type="text/css" rel="stylesheet" href="css/style.css"></link>
 		<script src="resources/jquery-2.0.3.js"></script>
+		<script src="resources/typeahead.js"></script>
+		<script src="javascript/script.js"></script>
 
 
 

@@ -46,6 +46,22 @@ include "templates/header.php";
 					$tablename = $value;
 				}
 			}
+			//////////////////////////////////////////////////////////////
+			//test lagra setnamn som json
+			$result = query("SELECT DISTINCT Setname FROM sets");
+			$data = array();
+			while($row = mysql_fetch_assoc($result)){
+				$data [] = array($row['Setname']
+					//'Setname' => $row['Setname'],
+					//'SetID' => $row['SetID']
+					);
+			}
+
+			$json_data = json_encode($data);
+			file_put_contents('Setnames.json', $json_data);
+
+
+			///////////////////////////////////////////////////////////////
 
 	//Check page
 	$ITEMS_PER_PAGE = 20;
@@ -103,3 +119,67 @@ include "templates/header.php";
 <?php
 include "templates/footer.php";
 ?>
+<script>
+
+$('.search').typeahead({
+  //name: 'Setnames',
+  //prefetch: '/Setnames.json',                                   
+  //limit: 10
+ 	local: ["Town Mini-Figures","Space Mini-Figures","Castle Mini Figures","Living Room","Farm Set Animals","Playhouse","Farm"]
+  /*local: [
+          "Alabama",
+          "Alaska",
+          "Arizona",
+          "Arkansas",
+          "California",
+          "Colorado",
+          "Connecticut",
+          "Delaware",
+          "Florida",
+          "Georgia",
+          "Hawaii",
+          "Idaho",
+          "Illinois",
+          "Indiana",
+          "Iowa",
+          "Kansas",
+          "Kentucky",
+          "Louisiana",
+          "Maine",
+          "Maryland",
+          "Massachusetts",
+          "Michigan",
+          "Minnesota",
+          "Mississippi",
+          "Missouri",
+          "Montana",
+          "Nebraska",
+          "Nevada",
+          "New Hampshire",
+          "New Jersey",
+          "New Mexico",
+          "New York",
+          "North Carolina",
+          "North Dakota",
+          "Ohio",
+          "Oklahoma",
+          "Oregon",
+          "Pennsylvania",
+          "Rhode Island",
+          "South Carolina",
+          "South Dakota",
+          "Tennessee",
+          "Texas",
+          "Utah",
+          "Vermont",
+          "Virginia",
+          "Washington",
+          "West Virginia",
+          "Wisconsin",
+          "Wyoming"
+        ]*/
+});
+
+
+</script>
+
