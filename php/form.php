@@ -1,6 +1,8 @@
 				
 			<div id="form">
-					<form action="resultat.php" method="get"> 
+				<script src="javascript/validate.js"></script>
+
+					<form id="searchform" action="resultat.php" method="get" onsubmit="return validate();"> 
 						
 						<input class="search" type="text" name="search" placeholder="search" data-provide="typeahead"> 
 						<input type="submit" value="Submit"><br>

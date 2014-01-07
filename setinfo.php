@@ -16,9 +16,22 @@ include "templates/header.php";
 			//indata från form
 			if (isset($_GET["SetID"]))
 				$search = $_GET["SetID"];
+			else
+				echo "Error occured. No ID supplied.";
 			
-			//Hittar det SET vi ska visa. 
-			//$x = query("SELECT * FROM sets WHERE 1 AND SetID = '$search'");
+			$setquery = query("SELECT * FROM sets WHERE 1 AND SetID = '$search'");
+			
+			$setassoc = mysql_fetch_assoc($setquery);
+
+				echo "<h2>" . $setassoc["Setname"] . "</h2>";
+				list($url1, $url2) = load_image($setassoc["SetID"]);
+				echo "<img src='$url2' alt='No image found.' /><br>"; 
+				echo "ID: " . $setassoc["SetID"] . "<br>";
+				echo "Released: " . $setassoc["Year"] . "<br>";
+				echo "Amount of parts: " . "" . "<br>";
+				echo "Amount of unique parts: ";
+
+
 			$x = query("SELECT parts.Partname, parts.PartID, inventory.Quantity
 						FROM inventory 
 						JOIN colors
@@ -31,14 +44,9 @@ include "templates/header.php";
 						AND sets.SetID='$search'
 						ORDER BY `inventory`.`Quantity`  DESC 
 						LIMIT 100");
+
 			//Kontroll att resultat hittades
 			if(count($x) > 0){
-
-				/*$setassoc = mysql_fetch_assoc($x);
-
-				echo "Setname: " . $setassoc["Setname"] . "<br>"; 
-				echo "SetID: " . $setassoc["SetID"]; */
-
 				echo "<table>";
 				//vilka rubriker som ska visas
 				$headarray = array("Partname", "PartID", "Quantity", "Pics");

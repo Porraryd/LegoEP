@@ -122,10 +122,11 @@ include "templates/footer.php";
 <script>
 
 $('.search').typeahead({
-  //name: 'Setnames',
-  //prefetch: '/Setnames.json',                                   
-  //limit: 10
- 	local: ["Town Mini-Figures","Space Mini-Figures","Castle Mini Figures","Living Room","Farm Set Animals","Playhouse","Farm"]
+  	name: 'Setnames',
+  	prefetch: 'countries.json',                                   
+  
+ 	//local: ["Town Mini-Figures","Space Mini-Figures","Castle Mini Figures","Living Room","Farm Set Animals","Playhouse","Farm"]
+  	//limit: 10
   /*local: [
           "Alabama",
           "Alaska",
