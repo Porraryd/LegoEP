@@ -27,7 +27,7 @@ table {
 }
 #form {
 	background-color: #FFFFFF;
-	text-align: center;
+	/*text-align: center;*/
 }
 /*#db_info {
 	float: left;
@@ -60,6 +60,25 @@ table {
 	width: 94%;
 	padding: 1%;
 }
+
+/* FÖR STARTSIDAN ONLY */
+#startpage {
+	text-align: center;
+}
+
+.Center-Container {
+  position: relative;
+}
+
+.Absolute-Center {
+	max-width: 600px;
+	min-width: 200px;
+  height: 50%;
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
+}
+/*STARTSIDAN SLUTAR HÄR */
 
 table, th, td {
 	background-color: #FFFFFF;
