@@ -6,6 +6,7 @@
 
 		<link type="text/css" rel="stylesheet" href="css/normalize.css"></link>
 		<link type="text/css" rel="stylesheet" href="css/style.css"></link>
+		<link type="text/css" rel="stylesheet" href="guestbookstyle.css"></link>
 		<script src="resources/jquery-2.0.3.js"></script>
 		<script src="resources/typeahead.js"></script>
 		<script src="javascript/script.js"></script>
@@ -22,6 +23,7 @@
 				<nav>
 					<a href="index.php">Hem</a>
 					<a href="contact.php">Contact</a>
- -          		<a href="help.php">Help</a>
+					<a href="mess.php">Message</a>
+            		<a href="help.php">Help</a>
 				</nav>
 			</header>
