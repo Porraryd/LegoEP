@@ -1,6 +1,4 @@
 <?php 
-include "functions.php";
-
 $assoc_arr = readResults();
 if(!$assoc_arr){
 	$assoc_arr = array();
@@ -18,6 +16,6 @@ if(!$_POST['name'] == "") {
 }
 
 $json_string = json_encode($assoc_arr);
-file_put_contents("entries.json", $json_string);
+file_put_contents("resources/entries.json", $json_string);
 
 header("Location: index.php");

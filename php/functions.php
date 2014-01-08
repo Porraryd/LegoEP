@@ -3,7 +3,7 @@ include "error_logger.php";
 
 function readResults() {
     
-	$jsonFromFile = file_get_contents("entries.json");
+	$jsonFromFile = file_get_contents("resources/entries.json");
     $assoc_arr = json_decode($jsonFromFile, true);
 	
 	return $assoc_arr;
