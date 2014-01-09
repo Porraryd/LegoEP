@@ -19,10 +19,12 @@
 			
 			<header class="wrapper">
 				<h1><a href="index.php">Legodatabas!</a></h1>
-
 				<nav>
 					<a href="home.php">Hem</a>
 					<a href="mess.php">Message</a>
             		<a href="info.php">information</a>
 				</nav>
+				<?php
+				include "php/form.php";
+				?>
 			</header>

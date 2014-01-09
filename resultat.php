@@ -2,9 +2,6 @@
 include "templates/header.php";
 ?>
 	<main class="wrapper">
-		<?php
-		include "php/form.php";
-		?>
 		<div class="row cf">
 			<?php
 			include 'php/db_connect.php';
@@ -85,17 +82,17 @@ include "templates/header.php";
 		$x = query("SELECT Partname, PartID FROM $tablename WHERE 1 AND (Partname LIKE '%{$search}%' OR PartID LIKE '%{$search}%') LIMIT $start_from, $ITEMS_PER_PAGE ");	
 	}
 
-	
+	$result = mysql_query("SELECT COUNT(*) FROM $tablename WHERE 1 AND (Setname LIKE '%{$search}%' OR SetID LIKE '%{$search}%')");
+	$row = mysql_fetch_array($result);
+	$totalcount = $row[0];
 
-			//information om vad som man får tillbaka från frågan
-	echo 'Search word: ' . $search . '<br>';
-	echo 'Working in table: ' . $tablename . '<br>';
-	echo 'Number of Rows: ' .  mysql_num_rows($x) . '<br>';
+	//information om vad som man får tillbaka från fråganx
 	
 	//Om det är en tom sökning eller bara ett whitespace så visas felmeddelande
-	if( isset ($resultmsg)){
-		echo $resultmsg;
+	if($totalcount == 0){
+		echo '<p>Your search <em>' . $search . '</em> did not give any result..<p>';
 	}else{
+		echo '<p>Your search <em>' . $search . '</em> gave ' . $totalcount . ' results.<p>';
 		//hämtar data som genereras av frågan
 		echo "<table>";
 			//vilka rubriker som ska visas
@@ -108,11 +105,11 @@ include "templates/header.php";
 			display_table($x, $headarray);
 		echo "</table>";
 
+		if (($start_from+20) < $totalcount)
+			echo 'Showing ' . ($start_from+1) . ' to ' . ($start_from+20) . ' of ' . $totalcount . ' results<br><br>';
 
-		//Query för att räkna hur många objekt som finns. BÖR ÄNDRAS TILL ETT COUNT()-kommando för att optimera. 
-		$countquery = query("SELECT * FROM $tablename WHERE 1 AND $type LIKE '%{$search}%'");
-		$totalcount = mysql_num_rows($countquery);
-		echo 'Number of Rows ' .  $totalcount . '<br><br>';
+		else
+			echo 'Showing ' . ($start_from+1) . ' to ' . $totalcount . ' of ' . $totalcount . ' results<br><br>';
 
 		//Räknar hur många sidor det ska vara totalt
 		$total_pages = ceil($totalcount / 20);
