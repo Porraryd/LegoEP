@@ -79,7 +79,13 @@ include "templates/header.php";
 				AND s.$type='{$search}' 
 				LIMIT $start_from, $ITEMS_PER_PAGE");*/
 
-	$x = query("SELECT Setname, SetID, Year FROM $tablename WHERE 1 AND (Setname LIKE '%{$search}%' OR SetID LIKE '%{$search}%') LIMIT $start_from, $ITEMS_PER_PAGE ");
+	if ($tablename == 'sets'){
+		$x = query("SELECT Setname, SetID, Year FROM $tablename WHERE 1 AND (Setname LIKE '%{$search}%' OR SetID LIKE '%{$search}%') LIMIT $start_from, $ITEMS_PER_PAGE ");		
+	}else{
+		$x = query("SELECT Partname, PartID FROM $tablename WHERE 1 AND (Partname LIKE '%{$search}%' OR PartID LIKE '%{$search}%') LIMIT $start_from, $ITEMS_PER_PAGE ");	
+	}
+
+	
 
 			//information om vad som man får tillbaka från frågan
 	echo 'Working in table: ' . $tablename . '<br>';
@@ -92,7 +98,11 @@ include "templates/header.php";
 		//hämtar data som genereras av frågan
 		echo "<table>";
 			//vilka rubriker som ska visas
+		if ($tablename == 'sets'){
 			$headarray = array("Setname","SetID", "Year", "Pics");
+		}else{
+			$headarray = array("Partname","PartID", "Pics");
+		}
 			//funktion som visar resultatet från sökningen som en tabell
 			display_table($x, $headarray);
 		echo "</table>";
