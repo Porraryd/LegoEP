@@ -18,12 +18,11 @@
 		<div id="container">
 			
 			<header class="wrapper">
-				<h1>Legodatabas!</h1>
+				<h1><a href="index.php">Legodatabas!</a></h1>
 
 				<nav>
-					<a href="index.php">Hem</a>
-					<a href="contact.php">Contact</a>
+					<a href="home.php">Hem</a>
 					<a href="mess.php">Message</a>
-            		<a href="help.php">Help</a>
+            		<a href="info.php">information</a>
 				</nav>
 			</header>
