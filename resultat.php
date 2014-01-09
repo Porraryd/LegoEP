@@ -88,6 +88,7 @@ include "templates/header.php";
 	
 
 			//information om vad som man får tillbaka från frågan
+	echo 'Search word: ' . $search . '<br>';
 	echo 'Working in table: ' . $tablename . '<br>';
 	echo 'Number of Rows: ' .  mysql_num_rows($x) . '<br>';
 	
