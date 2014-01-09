@@ -10,8 +10,10 @@
 						</select>
 						<input class="search" type="text" name="search" placeholder="Search Lego" data-provide="typeahead"> 
 						<input type="submit" value="Search">
-						
+						<script src="javascript/tooltip.js"></script>
+				<img src="images/questionmark.png" class="masterTooltip" title="First, choose if you want to search Lego sets or parts. Then simply type either the ID or the name of what you are looking for." />
 					</form>
+					
 			</div>
 
 			

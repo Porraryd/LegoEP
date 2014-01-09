@@ -1,6 +1,6 @@
 body {
-	background-color: white;
-	font-family: 'Comic sans', sans-serif;
+	background-color: #888;
+	font-family: 'Myriad Pro','Arial', sans-serif;
 }
 
 .wrapper {
@@ -63,7 +63,11 @@ table {
 
 /* FÖR STARTSIDAN ONLY */
 #startpage {
+	background-color: white;
 	text-align: center;
+	border: 1px solid #000;
+	border-radius: 10px;
+	padding-bottom: 15px;
 }
 
 .Center-Container {
@@ -79,6 +83,17 @@ table {
   top: 0; left: 0; bottom: 0; right: 0;
 }
 /*STARTSIDAN SLUTAR HÄR */
+
+.tooltip {
+	display:none;
+	position:absolute;
+	border:1px solid #333;
+	background-color:#161616;
+	border-radius:5px;
+	padding:10px;
+	color:#fff;
+	font-size:12px Myriad Pro;
+}
 
 table, th, td {
 	background-color: #FFFFFF;
