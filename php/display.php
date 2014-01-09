@@ -30,6 +30,8 @@
 	                    	}else{
 	                    		if($key == 'Setname'){
 	                    			echo "<td>" . "<a href='setinfo.php?SetID=" . $rest["SetID"] . "'>" . $value . "</a>" . "</td>";
+	                    		}else if($key == 'Partname'){
+	                    			echo "<td>" . "<a href='partinfo.php?PartID=" . $rest["PartID"] . "'>" . $value . "</a>" . "</td>";
 	                    		}else{                 
 	                      			echo "<td>" . $value . "</td>";
 	                      		}
