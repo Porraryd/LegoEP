@@ -1,4 +1,4 @@
-<?php include "php/functions.php"; ?>
+<?php include "php/guestbook_functions.php"; ?>
 <?php
 include "templates/header.php";
 ?>

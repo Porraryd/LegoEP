@@ -1,6 +1,7 @@
 body {
 	background-color: #00a01a;
 	font-family: 'Myriad Pro','Arial', sans-serif;
+	font-size: 12pt;
 }
 
 .wrapper {
@@ -35,6 +36,28 @@ footer {
 }
 table {
 	display: table;
+}
+
+.masterTooltip{
+	padding: 3px;
+}
+
+.masterTooltip:focus{
+	outline-color: #00a01a;
+} 
+
+.input_text{
+	padding: 3px;
+	margin-bottom: 10px;
+	outline: none;
+	border-radius: 3px;
+	border-style: solid; 
+	border-color: #aaa;
+	border-width: 1px;
+}
+
+.input_text:focus{
+	border-color: #00a01a;
 }
 #form {
 	text-align: center;
@@ -94,14 +117,56 @@ table {
 }
 /*STARTSIDAN SLUTAR HÄR */
 
+/* GÄSTBOKEN */
+#guestbook_entry{
+	margin-bottom: 10px;
+	margin-top: 5px;
+	padding: 10px;
+	border: 1px;
+	border-style: solid; 
+	border-color: #ccc;	
+	border-radius: 10px;
+}
+
+.gb_name{
+	font-size: 14pt;
+	font-weight: bold; 
+	margin-bottom: 3px;
+}
+
+.gb_timestamp{
+	float: right;
+	position: relative;
+	top: -25px;
+	font-style: italic;
+	color: #aaa; 
+}
+.gb_textarea{
+	height: 120px;
+	width: 400px;
+	padding:5px;
+	margin-bottom: 10px;
+	border-radius: 10px;
+	border-color: #aaa;
+	resize:none;
+}
+.gb_textarea:focus 
+{
+    outline: none !important;
+    border:1px solid #;
+    border-radius: 10px;
+    border-color: #00a01a;
+    /*box-shadow: 0 0 10px #00a01a;*/
+}	
+
 .tooltip {
 	display:none;
 	position:absolute;
 	border:1px solid #333;
-	background-color:#161616;
+	background-color:#fff;
 	border-radius:5px;
 	padding:10px;
-	color:#fff;
+	color:#000;
 	font-size:12px Myriad Pro;
 }
 
