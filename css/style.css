@@ -4,6 +4,17 @@ body {
 	font-size: 12pt;
 }
 
+a:link {
+text-decoration: none;
+font-family: helvetica;
+}
+
+a:visited {
+text-decoration: none;
+font-family: helvetica;
+}
+
+
 .wrapper {
 	max-width: 800px;
 	min-width: 200px;
@@ -65,6 +76,19 @@ table {
 
 .row {
 	margin-bottom: 20px;
+}
+
+textarea {
+	width: 80%;
+	height: 120px;
+
+}
+
+.onehalf {
+	float: left;
+	width: 45%;
+	margin-right: 3%;
+	padding: 1%;
 }
 
 .onethird {

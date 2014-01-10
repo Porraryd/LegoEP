@@ -13,8 +13,8 @@ function showForm() {
 echo 	'<form action = "entry.php" method = "post">';
 		
 		
-echo 	'Name<br><input id="name" name="name" placeholder="Ditt namn"><br>
-		Message<br><textarea id="message" name="message" placeholder="Meddelande"></textarea>
+echo 	'Name<br><input id="name" name="name" placeholder="Name"><br>
+		Message<br><textarea id="message" name="message" placeholder="Messeage"></textarea>
 		<br><input type = "submit">
 		</form>';
 		
