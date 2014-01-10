@@ -4,7 +4,7 @@ include "templates/header.php";
 		<main class="wrapper">
 				<div class="row cf">
 					<div class="onehalf">
-					<h2>Contact support</h2>
+					<h2>Contact form</h2>
 					
 					<?php echo '<form action = "php/temp.php" method = "post">'; ?>
 					
@@ -20,10 +20,10 @@ include "templates/header.php";
 					type="image" src="images/info2.png" value="Sets" data-provide="typeahead"> 
 					
 					<input class="masterTooltip" title="Givas you a one specific part, you search parts by there number and/or letter combination" 
-					type="image" src="images/info1.png" value="Sets" data-provide="typeahead">
+					type="image" src="images/info1.png" value="Parts" data-provide="typeahead">
 					<script src="javascript/tooltip.js"></script>
 					
-					<p/>*hover over the images 
+					<p/>*hover over the info-icons 
 					</div>
 				</div>
 			</main>
