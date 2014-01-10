@@ -18,7 +18,7 @@
 		<div class="Absolute-Center">
 			<div class="Center-Container">
 				<div id="startpage">
-				<h1>Bild på logo</h1>
+				<a href="index.php"><img src="images/logo.png" alt"LEGODB"></a>
 				<?php
 					include "php/form.php";
 				?>

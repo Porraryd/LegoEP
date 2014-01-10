@@ -32,9 +32,8 @@ include "templates/header.php";
 
 			// val med tabell
 			//ANvänds inte någonstans
-			$keys = array('SetID' => 'sets',
-						  'Setname' => 'sets',
-					  	  'PartID' => 'parts');
+			$keys = array('Sets' => 'sets',
+					  	  'Parts' => 'parts');
 
 			//Leta reda på rätt tabell
 			//används inte någonstans
@@ -77,17 +76,23 @@ include "templates/header.php";
 				LIMIT $start_from, $ITEMS_PER_PAGE");*/
 
 	if ($tablename == 'sets'){
-		$x = query("SELECT Setname, SetID, Year FROM $tablename WHERE 1 AND (Setname LIKE '%{$search}%' OR SetID LIKE '%{$search}%') LIMIT $start_from, $ITEMS_PER_PAGE ");		
+		//Main query
+		$x = query("SELECT Setname, SetID, Year FROM $tablename WHERE 1 AND (Setname LIKE '%{$search}%' OR SetID LIKE '%{$search}%') LIMIT $start_from, $ITEMS_PER_PAGE ");
+		
+		//Count query
+		$result = mysql_query("SELECT COUNT(*) FROM $tablename WHERE 1 AND (Setname LIKE '%{$search}%' OR SetID LIKE '%{$search}%')");		
 	}else{
-		$x = query("SELECT Partname, PartID FROM $tablename WHERE 1 AND (Partname LIKE '%{$search}%' OR PartID LIKE '%{$search}%') LIMIT $start_from, $ITEMS_PER_PAGE ");	
+		//Main query
+		$x = query("SELECT Partname, PartID FROM $tablename WHERE 1 AND (Partname LIKE '%{$search}%' OR PartID LIKE '%{$search}%') LIMIT $start_from, $ITEMS_PER_PAGE ");
+		
+		//Count query
+		$result = mysql_query("SELECT COUNT(*) FROM $tablename WHERE 1 AND (Partname LIKE '%{$search}%' OR PartID LIKE '%{$search}%')");	
 	}
 
-	$result = mysql_query("SELECT COUNT(*) FROM $tablename WHERE 1 AND (Setname LIKE '%{$search}%' OR SetID LIKE '%{$search}%')");
+	//get the total amount of results
 	$row = mysql_fetch_array($result);
 	$totalcount = $row[0];
 
-	//information om vad som man får tillbaka från fråganx
-	
 	//Om det är en tom sökning eller bara ett whitespace så visas felmeddelande
 	if($totalcount == 0){
 		echo '<p>Your search <em>' . $search . '</em> did not give any result..<p>';
@@ -105,11 +110,13 @@ include "templates/header.php";
 			display_table($x, $headarray);
 		echo "</table>";
 
+		//Pagination
+		echo '<div class="pagination">';
 		if (($start_from+20) < $totalcount)
-			echo 'Showing ' . ($start_from+1) . ' to ' . ($start_from+20) . ' of ' . $totalcount . ' results<br><br>';
+			echo 'Showing ' . ($start_from+1) . ' to ' . ($start_from+20) . ' of ' . $totalcount . ' results<br>';
 
 		else
-			echo 'Showing ' . ($start_from+1) . ' to ' . $totalcount . ' of ' . $totalcount . ' results<br><br>';
+			echo 'Showing ' . ($start_from+1) . ' to ' . $totalcount . ' of ' . $totalcount . ' results<br>';
 
 		//Räknar hur många sidor det ska vara totalt
 		$total_pages = ceil($totalcount / 20);
@@ -119,6 +126,7 @@ include "templates/header.php";
 		for ($i=1; $i<=$total_pages; $i++){
 			echo "<a href='resultat.php?search=" . $search . "&type=" . $type . "&page=" . $i . "'>" . $i . "</a> "; 
 		}
+		echo '</div>';
 	}
 	mysql_free_result($x);
 	?>

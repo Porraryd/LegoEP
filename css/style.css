@@ -1,5 +1,5 @@
 body {
-	background-color: #888;
+	background-color: #00a01a;
 	font-family: 'Myriad Pro','Arial', sans-serif;
 }
 
@@ -7,6 +7,7 @@ body {
 	max-width: 800px;
 	min-width: 200px;
 	margin: 10px auto;
+	padding:10px;
 }
 
 header {
@@ -63,6 +64,11 @@ table {
 	background:#fff;
 	width: 94%;
 	padding: 1%;
+}
+
+.pagination {
+	margin-top: 10px;
+	text-align: center;
 }
 
 /* FÖR STARTSIDAN ONLY */

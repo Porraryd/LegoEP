@@ -18,13 +18,15 @@
 		<div id="container">
 			
 			<header class="wrapper">
-				<h1><a href="index.php">Legodatabas!</a></h1>
-				<nav>
-					<a href="home.php">Hem</a>
-					<a href="mess.php">Message</a>
-            		<a href="info.php">information</a>
-				</nav>
+				<a href="index.php"><img src="images/logo.png" alt"LEGODB"></a>
 				<?php
 				include "php/form.php";
 				?>
+				<br>
+				<nav>
+					<a href="home.php">Home</a> -
+					<a href="mess.php">Guestbook</a> -
+            		<a href="info.php">information</a>
+				</nav>
+				
 			</header>
