@@ -2,20 +2,29 @@
 include "templates/header.php";
 ?>
 		<main class="wrapper">
-		<?php 
-		include "php/form.php";
-		?>	
 				<div class="row cf">
-					<div class="onethird">Hej!</div>
-					<div class="onethird">Hej!</div>
-					<div class="onethird">Hej!</div>
-				</div>
-				<div class="row cf">
-					<div class="twothirds">
-						<h2>Bilder</h2>
-						Bilder!
+					<div class="onehalf">
+					<h2>Contact support</h2>
+					
+					<?php echo '<form action = "php/temp.php" method = "post">'; ?>
+					
+					<input id="name" name="name" placeholder="User">
+					<textarea id="message" name="message" placeholder="Message"></textarea>
+					<br><input type = "submit" value="Send"></br>
+					
 					</div>
-					<div class="onethird">Hej!</div>
+					<div class="onehalf">
+					<h2>Useful information</h2>
+					
+					<input class="masterTooltip" title="Sets contains two or more parts. You can search a set by a name or a number-combination" 
+					type="image" src="images/info2.png" value="Sets" data-provide="typeahead"> 
+					
+					<input class="masterTooltip" title="Givas you a one specific part, you search parts by there number and/or letter combination" 
+					type="image" src="images/info1.png" value="Sets" data-provide="typeahead">
+					<script src="javascript/tooltip.js"></script>
+					
+					<p/>*hover over the images 
+					</div>
 				</div>
 			</main>
 <?php
