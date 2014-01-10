@@ -26,7 +26,7 @@
 				<nav>
 					<a href="home.php">Home</a> -
 					<a href="mess.php">Guestbook</a> -
-            		<a href="info.php">information</a>
+            		<a href="contact.php">Contact</a>
 				</nav>
 				
 			</header>
