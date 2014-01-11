@@ -11,17 +11,8 @@ include "php/contact_functions.php";
 				<div class="row cf">
 					<div class="onehalf">
 					<h2>Contact form</h2>
-<<<<<<< HEAD
 					
-					<?php echo '<form action = "php/temp.php" method = "post">'; ?>
-					
-					<input id="name" name="name" placeholder="User">
-					<textarea id="message" name="message" placeholder="Message"></textarea>
-					<br><input type = "submit" value="Send"></br>
-=======
-		
 					<?php showForm(); ?>
->>>>>>> Kombinera info och kontakt
 					
 					</div>
 					<div class="onehalf">
