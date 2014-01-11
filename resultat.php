@@ -83,7 +83,10 @@ include "templates/header.php";
 		$result = mysql_query("SELECT COUNT(*) FROM $tablename WHERE 1 AND (Setname LIKE '%{$search}%' OR SetID LIKE '%{$search}%')");		
 	}else{
 		//Main query
-		$x = query("SELECT Partname, PartID FROM $tablename WHERE 1 AND (Partname LIKE '%{$search}%' OR PartID LIKE '%{$search}%') LIMIT $start_from, $ITEMS_PER_PAGE ");
+		$x = query("SELECT DISTINCT parts.Partname, parts.PartID, images.colorID FROM $tablename
+			JOIN images 
+			ON parts.partID = images.itemID
+			WHERE 1 AND (Partname LIKE '%{$search}%' OR PartID LIKE '%{$search}%') LIMIT $start_from, $ITEMS_PER_PAGE ");
 		
 		//Count query
 		$result = mysql_query("SELECT COUNT(*) FROM $tablename WHERE 1 AND (Partname LIKE '%{$search}%' OR PartID LIKE '%{$search}%')");	
@@ -107,7 +110,12 @@ include "templates/header.php";
 			$headarray = array("Partname","PartID", "Pics");
 		}
 			//funktion som visar resultatet från sökningen som en tabell
-			display_table($x, $headarray);
+		
+		if ($tablename == 'sets')
+			display_set_table($x, $headarray);
+		else
+			display_part_table($x, $headarray);
+
 		echo "</table>";
 
 		//Pagination

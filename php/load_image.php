@@ -1,10 +1,11 @@
 <?php
 
-        function load_image($value){
-
+        function load_image($value, $colorID){
+        	
                         $pic = query("SELECT * 
                                   FROM  `images` 
                             WHERE itemID='$value'
+                            AND colorID='$colorID'
                             ");
 
                 $pics = mysql_fetch_row($pic);

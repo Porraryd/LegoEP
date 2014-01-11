@@ -2,9 +2,6 @@
 include "templates/header.php";
 ?>
 	<main class="wrapper">
-		<?php
-		include "php/form.php";
-		?>
 		<div class="row cf">
 			<?php
 			include 'php/db_connect.php';
@@ -24,7 +21,7 @@ include "templates/header.php";
 			$setassoc = mysql_fetch_assoc($setquery);
 
 				echo "<h2>" . $setassoc["Setname"] . "</h2>";
-				list($url1, $url2) = load_image($setassoc["SetID"]);
+				list($url1, $url2) = load_image($setassoc["SetID"], 0);
 				echo "<img src='$url2' alt='No image found.' /><br>"; 
 				echo "ID: " . $setassoc["SetID"] . "<br>";
 				echo "Released: " . $setassoc["Year"] . "<br>";
@@ -32,7 +29,7 @@ include "templates/header.php";
 				echo "Amount of unique parts: ";
 
 
-			$x = query("SELECT parts.Partname, parts.PartID, inventory.Quantity
+			$x = query("SELECT parts.Partname, parts.PartID, inventory.Quantity, colors.colorID
 						FROM inventory 
 						JOIN colors
 						ON inventory.colorID = colors.ColorID 
@@ -51,7 +48,7 @@ include "templates/header.php";
 				//vilka rubriker som ska visas
 				$headarray = array("Partname", "PartID", "Quantity", "Pics");
 				//funktion som visar resultatet från sökningen som en tabell
-				display_table($x, $headarray);
+				display_part_table($x, $headarray);
 				echo "</table>";
 
 				mysql_free_result($x);
