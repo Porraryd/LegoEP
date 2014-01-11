@@ -5,6 +5,10 @@ body {
 	text-align: justify;
 }
 
+p {
+margin-bottom: 0px;
+}
+
 a:link {
 text-decoration: none;
 font-family: helvetica;
@@ -77,12 +81,6 @@ table {
 
 .row {
 	margin-bottom: 20px;
-}
-
-textarea {
-	width: 80%;
-	height: 120px;
-
 }
 
 .onehalf {
@@ -168,7 +166,7 @@ textarea {
 }
 .gb_textarea{
 	height: 120px;
-	width: 400px;
+	width: 80%;
 	padding:5px;
 	margin-bottom: 10px;
 	border-radius: 10px;

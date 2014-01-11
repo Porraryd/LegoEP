@@ -1,16 +1,27 @@
 <?php
 include "templates/header.php";
+include "php/contact_functions.php";
 ?>
 		<main class="wrapper">
+					<div class="row cf">
+						<p>This webpage is developed by Johan Nordin, Christoffer Engelbrektsson & Pontus Orraryd for Lego enthusiasts around the world.
+						You can use this website to search for Lego parts or sets to find out what parts or sets you might be missing.
+						<p>If you would like to give us feedback, the best way to contact us is through the form below.
+					</div>
 				<div class="row cf">
 					<div class="onehalf">
 					<h2>Contact form</h2>
+<<<<<<< HEAD
 					
 					<?php echo '<form action = "php/temp.php" method = "post">'; ?>
 					
 					<input id="name" name="name" placeholder="User">
 					<textarea id="message" name="message" placeholder="Message"></textarea>
 					<br><input type = "submit" value="Send"></br>
+=======
+		
+					<?php showForm(); ?>
+>>>>>>> Kombinera info och kontakt
 					
 					</div>
 					<div class="onehalf">
@@ -25,6 +36,7 @@ include "templates/header.php";
 					
 					<p/>*hover over the info-icons 
 					</div>
+
 				</div>
 			</main>
 <?php
