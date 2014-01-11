@@ -1,60 +1,47 @@
 <?php
 
-	function load_image($value){
+        function load_image($value){
 
-			$pic = query("SELECT images.itemTypeID, images.itemID, images.has_gif, images.has_jpg, images.has_largegif, images.has_largejpg, images.colorID, inventory.SetID
-				  FROM  inventory
-				  JOIN images
-				  ON inventory.SetID=images.itemID
-          		  WHERE 1
-          		  AND inventory.setID='$value'
-          		  ");
-			//var_dump(mysql_fetch_row($pic));
-			//var_dump(mysql_fetch_assoc($pic));
-        	$pics = mysql_fetch_assoc($pic);
+                        $pic = query("SELECT * 
+                                  FROM  `images` 
+                            WHERE itemID='$value'
+                            ");
+
+                $pics = mysql_fetch_row($pic);
 
 
-    		if ($pics["itemTypeID"] == 'S'){
-	        	//check for small set images
-	        	if($pics["has_gif"] == 1){
-	        		$url = 'http://webstaff.itn.liu.se/~stegu76/img.bricklink.com' . '/' . $pics["itemTypeID"] . '/' . $pics["itemID"] . '.gif';
-	        	}else if($pics["has_jpg"] == 1){
-					$url = 'http://webstaff.itn.liu.se/~stegu76/img.bricklink.com' . '/' . $pics["itemTypeID"] . '/' . $pics["itemID"] . '.jpg';
-				}else{
-					$url = "";
-				}
-			}else if ($pics["itemTypeID"] == 'M'){
-	        	//check for small set images
-	        	if($pics["has_gif"] == 1){
-	        		$url = 'http://webstaff.itn.liu.se/~stegu76/img.bricklink.com' . '/' . $pics["itemTypeID"] . '/' . $pics["itemID"] . '.gif';
-	        	}else if($pics["has_jpg"] == 1){
-					$url = 'http://webstaff.itn.liu.se/~stegu76/img.bricklink.com' . '/' . $pics["itemTypeID"] . '/' . $pics["itemID"] . '.jpg';
-				}else{
-					$url = "";
-				}
-			}else{
-				//check for small part images
-	        	if($pics["has_gif"] == 1){
-	        		$url = 'http://webstaff.itn.liu.se/~stegu76/img.bricklink.com' . '/' . $pics["itemTypeID"] . '/' . $pics["colorID"] . '/' . $pics["itemID"] . '.gif';
-	        	}else if($pics["has_jpg"] == 1){
-					$url = 'http://webstaff.itn.liu.se/~stegu76/img.bricklink.com' . '/' . $pics["itemTypeID"] . '/' . $pics["colorID"] . '/' . $pics["itemID"] . '.jpg';
-				}else{
-					$url = "";
-				}
-			}
-				//check for large images
-				if($pics["has_largegif"] == 1){
-	        		$url_l = 'http://webstaff.itn.liu.se/~stegu76/img.bricklink.com' . '/' . $pics["itemTypeID"] . 'L/' . $pics["itemID"] . '.gif';
-	        	}else if($pics["has_largejpg"] == 1){
-					$url_l = 'http://webstaff.itn.liu.se/~stegu76/img.bricklink.com' . '/' . $pics["itemTypeID"] . 'L/' . $pics["itemID"] . '.jpg';
-				}else{
-					$url_l = "";
-				}
-				echo $url . '<br>';
-				echo $url_l . '<br>';
+                    if ($pics[0] == 'S'){
+                        //check for small set images
+                        if($pics[3] == 1){
+                                $url = 'http://webstaff.itn.liu.se/~stegu76/img.bricklink.com' . '/' . $pics[0] . '/' . $pics[1] . '.gif';
+                        }else if($pics[4] == 1){
+                                        $url = 'http://webstaff.itn.liu.se/~stegu76/img.bricklink.com' . '/' . $pics[0] . '/' . $pics[1] . '.jpg';
+                                }else{
+                                        $url = "";
+                                }
+                        }else{
+                                //check for small part images
+                        if($pics[3] == 1){
+                                $url = 'http://webstaff.itn.liu.se/~stegu76/img.bricklink.com' . '/' . $pics[0] . '/' . $pics[2] . '/' . $pics[1] . '.gif';
+                        }else if($pics[4] == 1){
+                                        $url = 'http://webstaff.itn.liu.se/~stegu76/img.bricklink.com' . '/' . $pics[0] . '/' . $pics[2] . '/' . $pics[1] . '.jpg';
+                                }else{
+                                        $url = "";
+                                }
+                        }
+                                //check for large images
+                                if($pics[5] == 1){
+                                $url_l = 'http://webstaff.itn.liu.se/~stegu76/img.bricklink.com' . '/' . $pics[0] . 'L/' . $pics[1] . '.gif';
+                        }else if($pics[6] == 1){
+                                        $url_l = 'http://webstaff.itn.liu.se/~stegu76/img.bricklink.com' . '/' . $pics[0] . 'L/' . $pics[1] . '.jpg';
+                                }else{
+                                        $url_l = "";
+                                }
+                        
 
-			return array($url, $url_l);
-	}
+
+                        return array($url, $url_l);
+        }
 
 
 
