@@ -26,8 +26,8 @@
 				<br>
 				<nav>
 					<a href="home.php">Home</a> - 
-					<a href="mess.php">Message</a> - 
-            		<a href="info.php">Infomation</a>
+					<a href="mess.php">Guestbook</a> - 
+            		<a href="info.php">Contact/info</a>
 				</nav>
 				</div>
 			</div>

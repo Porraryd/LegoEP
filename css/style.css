@@ -12,11 +12,13 @@ margin-bottom: 0px;
 a:link {
 text-decoration: none;
 font-family: helvetica;
+color: #00a01a;
 }
 
 a:visited {
 text-decoration: none;
 font-family: helvetica;
+color: #00a01a;
 }
 
 
@@ -103,7 +105,7 @@ table {
 	width: 61%;
 	margin-right: 3%;
 	padding: 1%;
-	background: #fff;
+	background: #eee;
 }
 
 .threethirds {

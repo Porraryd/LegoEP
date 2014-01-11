@@ -2,9 +2,6 @@
 include "templates/header.php";
 ?>
 		<main class="wrapper">
-		<?php 
-		include "php/form.php";
-		?>	
 				<div class="row cf">
 					<div class="onethird">Hej!</div>
 					<div class="onethird">Hej!</div>
@@ -12,8 +9,7 @@ include "templates/header.php";
 				</div>
 				<div class="row cf">
 					<div class="twothirds">
-						<h2>Bilder</h2>
-						Bilder!
+					Hej!
 					</div>
 					<div class="onethird">Hej!</div>
 				</div>
