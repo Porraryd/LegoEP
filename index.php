@@ -1,3 +1,4 @@
+<?php include "php/search_functions.php"; ?>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -9,6 +10,7 @@
 		<script src="resources/jquery-2.0.3.js"></script>
 		<script src="resources/typeahead.js"></script>
 		<script src="javascript/script.js"></script>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 		
 
 

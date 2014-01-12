@@ -1,5 +1,6 @@
 <?php
 include "templates/header.php";
+include "php/search_log.php";
 ?>
 	<main class="wrapper">
 		<div class="row cf">
