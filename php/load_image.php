@@ -36,7 +36,7 @@
                         }else if($pics[6] == 1){
                                         $url_l = 'http://webstaff.itn.liu.se/~stegu76/img.bricklink.com' . '/' . $pics[0] . 'L/' . $pics[1] . '.jpg';
                                 }else{
-                                        $url_l = "images/lego_big.jpg";
+                                        $url_l = "images/lego_big.png";
                                 }
                         
 
