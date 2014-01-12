@@ -18,7 +18,7 @@
                         }else if($pics[4] == 1){
                                         $url = 'http://webstaff.itn.liu.se/~stegu76/img.bricklink.com' . '/' . $pics[0] . '/' . $pics[1] . '.jpg';
                                 }else{
-                                        $url = "";
+                                        $url = "images/lego_small.png";
                                 }
                         }else{
                                 //check for small part images
@@ -27,7 +27,7 @@
                         }else if($pics[4] == 1){
                                         $url = 'http://webstaff.itn.liu.se/~stegu76/img.bricklink.com' . '/' . $pics[0] . '/' . $pics[2] . '/' . $pics[1] . '.jpg';
                                 }else{
-                                        $url = "";
+                                        $url = "images/lego_small.png";
                                 }
                         }
                                 //check for large images
@@ -36,7 +36,7 @@
                         }else if($pics[6] == 1){
                                         $url_l = 'http://webstaff.itn.liu.se/~stegu76/img.bricklink.com' . '/' . $pics[0] . 'L/' . $pics[1] . '.jpg';
                                 }else{
-                                        $url_l = "";
+                                        $url_l = "images/lego_big.jpg";
                                 }
                         
 
