@@ -34,12 +34,12 @@ include "templates/header.php";
 				echo "Amount of unique parts: ";
 
 			//vilka sets som parten ingår i
-			$x = query("SELECT sets.Setname, sets.SetID, sets.Year
+			$x = query("SELECT sets.Setname, sets.SetID, sets.Year, categories.Categoryname
 						FROM inventory 
-						JOIN colors
-						ON inventory.colorID = colors.ColorID 
 						JOIN sets
 						ON inventory.SetID = sets.SetID
+						JOIN categories
+						ON categories.CatID = sets.CatID 
 						JOIN parts
 						ON inventory.ItemID = parts.PartID
 						WHERE 1
@@ -48,19 +48,15 @@ include "templates/header.php";
 						LIMIT 10");
 
 			//Kontroll att resultat hittades
-			if(count($x) > 0){
-				echo "<table>";
-				//vilka rubriker som ska visas
-				$headarray = array("Setname", "SetID", "Year", "Pics");
+			if(mysql_num_rows($x) > 0){
 				//funktion som visar resultatet från sökningen som en tabell
-				display_set_table($x, $headarray);
-				echo "</table>";
+				display_set_table($x);
 
 				mysql_free_result($x);
 						
 			}
 			else{
-				echo "Your search did not yield any results.";
+				echo "<br><br><span class='list_title'>We could not find any sets that includes this part.</span>";
 			}
 
 			?>

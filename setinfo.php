@@ -29,7 +29,7 @@ include "templates/header.php";
 				echo "Amount of unique parts: ";
 
 
-			$x = query("SELECT parts.Partname, parts.PartID, inventory.Quantity, colors.colorID
+			$x = query("SELECT parts.Partname, parts.PartID, inventory.Quantity, colors.colorID, colors.Colorname
 						FROM inventory 
 						JOIN colors
 						ON inventory.colorID = colors.ColorID 
@@ -43,19 +43,14 @@ include "templates/header.php";
 						LIMIT 100");
 
 			//Kontroll att resultat hittades
-			if(count($x) > 0){
-				echo "<table>";
-				//vilka rubriker som ska visas
-				$headarray = array("Partname", "PartID", "Quantity", "Pics");
-				//funktion som visar resultatet från sökningen som en tabell
-				display_part_table($x, $headarray);
-				echo "</table>";
+			if(mysql_num_rows($x) > 0){
+				display_part_table($x);
 
 				mysql_free_result($x);
 						
 			}
 			else{
-				echo "Your search did not yield any results.";
+				echo "<br><br><span class='list_title'>We could not find the parts in this set.</span>";
 			}
 
 			?>

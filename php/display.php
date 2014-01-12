@@ -1,16 +1,7 @@
 <?php
 	include 'php/load_image.php';
-     function display_set_table($query, $headarray){
+     function display_set_table($query){
 
-     		//Rubriker
-     		echo "<tr>";
-	     		for($x = 0; $x < count($headarray); $x++){
-	            	echo "<th>" . $headarray[$x] . "</th>" ;
-	            } 
-           	echo "</tr>";
-
-           	
-           	//resten av tabellen
           	while ( $rest = mysql_fetch_assoc($query) ){
           		$length = count($rest);
           		if (isset($rest['colorID']))
@@ -19,47 +10,22 @@
           		{
           			$colorID = 0;
           		}
-          			
-          		$i=0;
-	        	echo "<tr>";
-	                    foreach ($rest as $key => $value){
-	                    	if($key == 'SetID' || $key == 'PartID'){
-	                    		list($url1, $url2) = load_image($value, $colorID);
-		                    }
+          		
+          		list($url1, $url2) = load_image($rest["SetID"], $colorID);
 
-                    		$i++;
-                    		//echo $url2 . '<br>';
+          		
+          		echo '<div class="list_item">';
+	        	echo "<a href='$url2' class='list_picture'><img src='$url1'/></a>";
+          		echo "<a href='setinfo.php?SetID=" . $rest["SetID"] . "'><span class='list_title'>" . $rest["Setname"] . '</span></a>
+          		     <span class="list_year">' . $rest["Year"] . '</span><br>'
+          		 . '<span class="list_text">ID: ' . $rest["SetID"] . '<br>Category: ' . $rest["Categoryname"];
 
-	                    	if($i == $length ){
-		                    	echo "<td>" . $value . "</td>";
-		                    	echo "<td>" . "<p><a href='$url2'>
-						                    	  <img src='$url1' alt='gif-image' /></p>" . "</td>";	
-	                    	}else{
-	                    		if($key == 'Setname'){
-	                    			echo "<td>" . "<a href='setinfo.php?SetID=" . $rest["SetID"] . "'>" . $value . "</a>" . "</td>";
-	                    		}else if($key == 'Partname'){
-	                    			echo "<td>" . "<a href='partinfo.php?PartID=" . $rest["PartID"] . "'>" . $value . "</a>" . "</td>";
-	                    		}else{                 
-	                      			echo "<td>" . $value . "</td>";
-	                      		}
-	                      	}
-	                    }
-
-	           	echo "</tr>";
-	           	
+          		echo '</div>';
            	}
 
      }
 
-     function display_part_table($query, $headarray){
-
-     		//Rubriker
-     		echo "<tr>";
-	     		for($x = 0; $x < count($headarray); $x++){
-	            	echo "<th>" . $headarray[$x] . "</th>" ;
-	            } 
-           	echo "</tr>";
-
+     function display_part_table($query){
            	
            	//resten av tabellen
           	while ( $rest = mysql_fetch_assoc($query) ){
@@ -71,32 +37,20 @@
           			$colorID = 1;
           		}
           			
-          		$i=0;
-	        	echo "<tr>";
-	                    foreach ($rest as $key => $value){
-	                    	if($key == 'SetID' || $key == 'PartID'){
-	                    		list($url1, $url2) = load_image($value, $colorID);
-		                    }
+          		list($url1, $url2) = load_image($rest["PartID"], $colorID);
+          		
+          		echo '<div class="list_item">';
+	        	echo "<a href='$url2' class='list_picture'><img src='$url1'/></a>";
+          		echo "<a href='partinfo.php?PartID=" . $rest["PartID"] . "'><span class='list_title'>" . $rest["Partname"] . '</span></a>';
 
-                    		$i++;
-                    		//echo $url2 . '<br>';
+          		if (isset ($rest["Quantity"]))
+          			echo "<span class='list_year'>Quantity:  " . $rest["Quantity"] . "</span><br>";
 
-	                    	if($i == $length ){
-		                    	echo "<td>" . $value . "</td>";
-		                    	echo "<td>" . "<p><a href='$url2'>
-						                    	  <img src='$url1' alt='gif-image' /></p>" . "</td>";	
-	                    	}else{
-	                    		if($key == 'Setname'){
-	                    			echo "<td>" . "<a href='setinfo.php?SetID=" . $rest["SetID"] . "'>" . $value . "</a>" . "</td>";
-	                    		}else if($key == 'Partname'){
-	                    			echo "<td>" . "<a href='partinfo.php?PartID=" . $rest["PartID"] . "'>" . $value . "</a>" . "</td>";
-	                    		}else{                 
-	                      			echo "<td>" . $value . "</td>";
-	                      		}
-	                      	}
-	                    }
+          		echo '<span class="list_text">ID: ' . $rest["PartID"] . '<br>';
 
-	           	echo "</tr>";
+          		if (isset ($rest["Colorname"]))
+          			echo 'Color: ' . $rest["Colorname"];
+          		echo '</div>';
 	           	
            	}
 

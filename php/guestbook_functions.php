@@ -24,7 +24,7 @@ $results = readResults();
  
 for($i = 0; $i < count($results); $i++) {
 		echo '<div id="guestbook_entry">';
-		echo '<div class="gb_name">' . $results[$i]['name'] . '</div>' . '<div class="gb_timestamp">' . $results[$i]['time'] . '</div><br>';
+		echo '<span class="list_title">' . $results[$i]['name'] . '</span>' . '<span class="list_year">' . $results[$i]['time'] . '</span><br>';
 		echo $results[$i]['message'];
 		echo '</div>';
 	}

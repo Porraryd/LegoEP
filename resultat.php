@@ -78,7 +78,10 @@ include "php/search_log.php";
 
 	if ($tablename == 'sets'){
 		//Main query
-		$x = query("SELECT Setname, SetID, Year FROM $tablename WHERE 1 AND (Setname LIKE '%{$search}%' OR SetID LIKE '%{$search}%') LIMIT $start_from, $ITEMS_PER_PAGE ");
+		$x = query("SELECT sets.Setname, sets.SetID, sets.Year, categories.Categoryname FROM $tablename 
+			JOIN categories
+			ON categories.CatID = sets.CatID 
+			WHERE 1 AND (Setname LIKE '%{$search}%' OR SetID LIKE '%{$search}%') LIMIT $start_from, $ITEMS_PER_PAGE ");
 		
 		//Count query
 		$result = mysql_query("SELECT COUNT(*) FROM $tablename WHERE 1 AND (Setname LIKE '%{$search}%' OR SetID LIKE '%{$search}%')");		
@@ -102,22 +105,11 @@ include "php/search_log.php";
 		echo '<p>Your search <em>' . $search . '</em> did not give any result..<p>';
 	}else{
 		echo '<p>Your search <em>' . $search . '</em> gave ' . $totalcount . ' results.<p>';
-		//hämtar data som genereras av frågan
-		echo "<table>";
-			//vilka rubriker som ska visas
-		if ($tablename == 'sets'){
-			$headarray = array("Setname","SetID", "Year", "Pics");
-		}else{
-			$headarray = array("Partname","PartID", "Pics");
-		}
-			//funktion som visar resultatet från sökningen som en tabell
 		
 		if ($tablename == 'sets')
-			display_set_table($x, $headarray);
+			display_set_table($x);
 		else
-			display_part_table($x, $headarray);
-
-		echo "</table>";
+			display_part_table($x);
 
 		//Pagination
 		echo '<div class="pagination">';
