@@ -17,12 +17,14 @@ include "templates/header.php";
 				echo "Error occured. No ID supplied.";
 			
 			//info om parten
-			$setquery = query("SELECT parts.Partname, parts.PartID
-							   FROM inventory 
+			$setquery = query("SELECT DISTINCT colors.Colorname, parts.Partname, parts.PartID
+							   FROM inventory
 							   JOIN parts
-							   ON inventory.ItemID = parts.PartID 
+							   ON inventory.itemID = parts.partID
+							   JOIN colors
+							   ON inventory.colorID = colors.colorID 
 							   WHERE 1 
-							   AND parts.PartID = '$search'");
+							   AND inventory.itemID = '$search'");
 			
 			$setassoc = mysql_fetch_assoc($setquery);
 
@@ -30,8 +32,11 @@ include "templates/header.php";
 				list($url1, $url2) = load_image($setassoc["PartID"], 1);
 				echo "<img src='$url2' alt='No image found.' /><br>"; 
 				echo "ID: " . $setassoc["PartID"] . "<br>";
-				echo "Amount of parts: " . "" . "<br>";
-				echo "Amount of unique parts: ";
+				echo "Part available in: ";
+				while($color = mysql_fetch_assoc($setquery)){
+					echo $color['Colorname'] . ' ';
+				}
+				echo "<br>";
 
 			//vilka sets som parten ingår i
 			$x = query("SELECT sets.Setname, sets.SetID, sets.Year, categories.Categoryname
