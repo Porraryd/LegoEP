@@ -85,7 +85,7 @@ include "php/search_log.php";
 		
 		//Count query
 		$result = mysql_query("SELECT COUNT(*) FROM $tablename WHERE 1 AND (Setname LIKE '%{$search}%' OR SetID LIKE '%{$search}%')");		
-	}else{
+	}else if ($tablename == 'parts'){
 		//Main query
 		$x = query("SELECT DISTINCT parts.Partname, parts.PartID, images.colorID FROM $tablename
 			JOIN images 

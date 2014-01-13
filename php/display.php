@@ -44,9 +44,9 @@
           		echo "<a href='partinfo.php?PartID=" . $rest["PartID"] . "'><span class='list_title'>" . $rest["Partname"] . '</span></a>';
 
           		if (isset ($rest["Quantity"]))
-          			echo "<span class='list_year'>Quantity:  " . $rest["Quantity"] . "</span><br>";
+          			echo "<span class='list_year'>Quantity:  " . $rest["Quantity"] . "</span>";
 
-          		echo '<span class="list_text">ID: ' . $rest["PartID"] . '<br>';
+          		echo '<br><span class="list_text">ID: ' . $rest["PartID"] . '<br>';
 
           		if (isset ($rest["Colorname"]))
           			echo 'Color: ' . $rest["Colorname"];
