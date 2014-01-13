@@ -16,6 +16,13 @@ include "templates/header.php";
 			else
 				echo "Error occured. No ID supplied.";
 			
+			$ITEMS_PER_PAGE = 20;
+			if (isset($_GET["page"])){
+				$page = $_GET["page"];
+			}else{
+				$page = 1;
+			}
+			$start_from = ($page-1)*$ITEMS_PER_PAGE;
 			//info om parten
 			$setquery = query("SELECT DISTINCT colors.Colorname, parts.Partname, parts.PartID
 							   FROM inventory
@@ -50,13 +57,52 @@ include "templates/header.php";
 						WHERE 1
 						AND parts.PartID='$search'
 						ORDER BY `inventory`.`Quantity`  DESC 
-						LIMIT 10");
+						LIMIT $start_from, $ITEMS_PER_PAGE");
 
+			//Count query
+			$result = mysql_query("SELECT COUNT(sets.Setname) 
+				FROM inventory 
+				JOIN sets 
+				ON inventory.SetID = sets.SetID
+				JOIN parts
+				ON inventory.ItemID = parts.PartID 
+				WHERE 1 AND parts.PartID='$search'");
+
+			$row = mysql_fetch_array($result);
+			$totalcount = $row[0];
 			//Kontroll att resultat hittades
 			if(mysql_num_rows($x) > 0){
 				//funktion som visar resultatet från sökningen som en tabell
 				display_set_table($x);
 
+				//PAGINATION
+				echo '<div class="pagination">';
+				if (($start_from+20) < $totalcount)
+					echo 'Showing ' . ($start_from+1) . ' to ' . ($start_from+20) . ' of ' . $totalcount . ' results<br>';
+
+				else
+					echo 'Showing ' . ($start_from+1) . ' to ' . $totalcount . ' of ' . $totalcount . ' results<br>';
+
+				//Räknar hur många sidor det ska vara totalt
+				$total_pages = ceil($totalcount / 20);
+	
+				//Loop som skapar länkar till varje sida. 
+				if (($page-9) > 1)
+					echo "<a href='partinfo.php?PartID=" . $search . "&page=1'>" . "<< " . "</a> "; 
+		
+				
+				for ($i=($page-9); $i<=$total_pages; $i++){
+					if ($i == ($page+10))
+					{
+						echo "<a href='partinfo.php?PartID=" . $search . "&page=" . $total_pages . "'>" . " >>" . "</a> "; 
+						break;
+					}
+					if ($i == $page)
+						echo $i . " ";
+					else if ($i > 0)
+						echo "<a href='partinfo.php?PartID=" . $search . "&page=" . $i . "'>" . $i . "</a> "; 
+		}
+		echo '</div>';
 				mysql_free_result($x);
 						
 			}

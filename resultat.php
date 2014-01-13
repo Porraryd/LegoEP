@@ -127,8 +127,20 @@ include "php/search_log.php";
 	
 		//Loop som skapar länkar till varje sida. 
 		//TODO: Sätta någon maxgräns på hur många sidor som visas? Eller bara sätta pilar?
-		for ($i=1; $i<=$total_pages; $i++){
-			echo "<a href='resultat.php?search=" . $search . "&type=" . $type . "&page=" . $i . "'>" . $i . "</a> "; 
+		if (($page-9) > 1)
+			echo "<a href='resultat.php?search=" . $search . "&type=" . $type . "&page=1'>" . "<< " . "</a> "; 
+		
+		for ($i=($page-9); $i<=$total_pages; $i++){
+
+			if ($i == ($page+10))
+			{
+				echo "<a href='resultat.php?search=" . $search . "&type=" . $type . "&page=" . $total_pages . "'>" . " >>" . "</a> "; 
+				break;
+			}
+			if ($i == $page)
+				echo $i . " ";
+			else if ($i > 0)
+				echo "<a href='resultat.php?search=" . $search . "&type=" . $type . "&page=" . $i . "'>" . $i . "</a> "; 
 		}
 		echo '</div>';
 	}
