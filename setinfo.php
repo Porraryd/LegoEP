@@ -15,8 +15,13 @@ include "templates/header.php";
 				$search = $_GET["SetID"];
 			else
 				echo "Error occured. No ID supplied.";
-			
-			$setquery = query("SELECT * FROM sets WHERE 1 AND SetID = '$search'");
+
+			$setquery = query("SELECT COUNT(inventory.itemID) AS Unika, SUM(inventory.Quantity) AS Alla , sets.*
+								FROM inventory
+								JOIN sets
+								ON inventory.SetID=sets.SetID
+								WHERE 1
+								AND inventory.SetID='$search'");
 			
 			$setassoc = mysql_fetch_assoc($setquery);
 
@@ -25,8 +30,8 @@ include "templates/header.php";
 				echo "<img src='$url2' alt='No image found.' /><br>"; 
 				echo "ID: " . $setassoc["SetID"] . "<br>";
 				echo "Released: " . $setassoc["Year"] . "<br>";
-				echo "Amount of parts: " . "" . "<br>";
-				echo "Amount of unique parts: ";
+				echo "Amount of parts: " . $setassoc["Unika"] . "<br>";
+				echo "Amount of unique parts: " . $setassoc["Alla"];
 
 
 			$x = query("SELECT parts.Partname, parts.PartID, inventory.Quantity, colors.colorID, colors.Colorname

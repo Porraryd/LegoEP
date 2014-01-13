@@ -1,0 +1,151 @@
+1. Startsida med statistik (lagra parts sökningar i separat fil)
+2. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+SELECT images.itemTypeID, images.itemID, images.has_gif, images.has_jpg, images.has_largegif, images.has_largejpg, images.colorID, inventory.SetID, parts.PartID
+FROM  inventory
+JOIN images
+ON inventory.itemID=images.itemID
+JOIN colors
+ON inventory.colorID=colors.colorID
+JOIN parts
+ON inventory.itemID=parts.PartID
+JOIN itemtypes
+ON inventory.itemTypeID=images.itemTypeID
+WHERE 1
+AND inventory.SetID='045-1'
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+if ($key == 'itemID'){
+                   //check for small part images
+                  if($pics["has_gif"] == 1){
+                       $url = 'http://webstaff.itn.liu.se/~stegu76/img.bricklink.com' . '/' . $pics["itemTypeID"] . '/' . $pics["colorID"] . '/' . $pics["itemID"] . '.gif';
+                  }else if($pics["has_jpg"] == 1){
+                         $url = 'http://webstaff.itn.liu.se/~stegu76/img.bricklink.com' . '/' . $pics["itemTypeID"] . '/' . $pics["colorID"] . '/' . $pics["itemID"] . '.jpg';
+                    }else{
+                         $url = "";
+                    }
+               }else
+
+
+
+
+
+
+//check for large images
+                    if($pics["has_largegif"] == 1){
+                       $url_l = 'http://webstaff.itn.liu.se/~stegu76/img.bricklink.com' . '/' . $pics["itemTypeID"] . 'L/' . $pics["itemID"] . '.gif';
+                  }else if($pics["has_largejpg"] == 1){
+                         $url_l = 'http://webstaff.itn.liu.se/~stegu76/img.bricklink.com' . '/' . $pics["itemTypeID"] . 'L/' . $pics["itemID"] . '.jpg';
+                    }else{
+                         $url_l = "";
+                    } 
+
+
+
+
+
+
+
+
+
+
+
+SELECT images.itemTypeID, images.itemID, images.has_gif, images.has_jpg, images.has_largegif, images.has_largejpg, images.colorID, inventory.SetID, itemtypes.*
+FROM  inventory
+JOIN images
+ON inventory.itemID=images.itemID
+JOIN colors
+ON inventory.colorID=colors.colorID
+JOIN itemtypes
+ON inventory.itemTypeID=images.itemTypeID
+WHERE 1
+AND inventory.SetID='1497-1'
+
+
+
+
+SELECT *
+FROM  images
+JOIN inventory
+ON images.itemID=inventory.itemID
+WHERE 1
+AND images.itemTypeID='S'
+LIMIT 60
+
+
+
+SELECT *
+FROM  images
+JOIN inventory
+ON images.itemID=inventory.itemID
+JOIN sets
+ON inventory.SetID=sets.SetID
+WHERE 1
+AND sets.SetID='4492-1'
+LIMIT 200
+                      
+
+
+
+
+
+
+////pajjjar
+SELECT *
+FROM inventory
+JOIN itemtypes
+ON inventory.itemTypeID=itemtypes.itemTypeID
+JOIN images
+ON itemtypes.itemTypeID=images.itemTypeID
+WHERE 1
+ORDER BY itemtypes.itemTypeID DESC
+LIMIT 30
+
+SELECT *
+FROM  images
+JOIN itemtypes
+ON images.itemTypeID=itemtypes.itemTypeID
+JOIN inventory
+ON itemtypes.itemTypeID=inventory.itemTypeID
+JOIN sets
+ON inventory.SetID=sets.SetID
+WHERE 1
+AND itemtypes.itemTypeID='S'
+LIMIT 200
+
+
+
+
+
+
+
+
+
+
+                      
