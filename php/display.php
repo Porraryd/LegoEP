@@ -21,7 +21,7 @@
           		 . '<span class="list_text">ID: ' . $rest["SetID"] . '<br>Category: ' . $rest["Categoryname"];
 
           		 //Hover link
-          		echo "<a href='partinfo.php?SetID=" . $rest["SetID"] . "'><span class='list_hoverlink'></span></a>";
+          		echo "<a href='setinfo.php?SetID=" . $rest["SetID"] . "'><span class='list_hoverlink'></span></a>";
           		echo '</div>';
            	}
 
