@@ -20,6 +20,8 @@
           		     <span class="list_year">' . $rest["Year"] . '</span><br>'
           		 . '<span class="list_text">ID: ' . $rest["SetID"] . '<br>Category: ' . $rest["Categoryname"];
 
+          		 //Hover link
+          		echo "<a href='partinfo.php?SetID=" . $rest["SetID"] . "'><span class='list_hoverlink'></span></a>";
           		echo '</div>';
            	}
 
@@ -50,6 +52,9 @@
 
           		if (isset ($rest["Colorname"]))
           			echo 'Color: ' . $rest["Colorname"];
+
+          		//Hover link
+          		echo "<a href='partinfo.php?PartID=" . $rest["PartID"] . "'><span class='list_hoverlink'></span></a>";
           		echo '</div>';
 	           	
            	}
