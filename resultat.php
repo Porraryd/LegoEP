@@ -90,7 +90,10 @@ include "php/search_log.php";
 		$x = query("SELECT DISTINCT parts.Partname, parts.PartID, images.colorID FROM $tablename
 			JOIN images 
 			ON parts.partID = images.itemID
-			WHERE 1 AND (Partname LIKE '%{$search}%' OR PartID LIKE '%{$search}%') LIMIT $start_from, $ITEMS_PER_PAGE ");
+			WHERE 1 AND (Partname LIKE '%{$search}%' OR PartID LIKE '%{$search}%')
+			/*Detta kanske hjälper mot att vi får dubletter*/
+			GROUP BY parts.PartID
+			LIMIT $start_from, $ITEMS_PER_PAGE ");
 		
 		//Count query
 		$result = mysql_query("SELECT COUNT(*) FROM $tablename WHERE 1 AND (Partname LIKE '%{$search}%' OR PartID LIKE '%{$search}%')");	
