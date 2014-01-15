@@ -100,28 +100,22 @@ footer {
 	text-align: center;
 }
 
-/* FÖR STARTSIDAN ONLY */
+
 #startpage {
+
 	border: 1px solid hsl(100, 0%, 80%);
 	background-color: white;
 	text-align: center;
+	margin: 10px auto;
+	margin-top:100px;
+	padding:10px;
 	border-radius: 10px;
 	padding-bottom: 15px;
-}
-
-.Center-Container {
-  position: relative;
-}
-
-.Absolute-Center {
 	max-width: 800px;
 	min-width: 200px;
-  height: 80%;
-  margin: auto;
-  position: absolute;
-  top: 0; left: 0; bottom: 0; right: 0;
+	
+	
 }
-/*STARTSIDAN SLUTAR HÄR */
 
 /* GÄSTBOKEN */
 #guestbook_entry{

@@ -18,36 +18,34 @@
 
 	</head>
 	<body>
-		<div class="Absolute-Center">
-			<div class="Center-Container">
-				<main id="startpage">
-				<a href="index.php"><img src="images/logo.png" alt"LEGODB"></a>
+		<div id="startpage">
+			<a href="index.php"><img src="images/logo.png" alt"LEGODB"></a>
+			<?php
+				include "php/form.php";
+			?>
+
+			<br>
+			<nav>
+				<a href="index.php">Home</a> - 
+				<a href="mess.php">Guestbook</a> - 
+        		<a href="info.php">Contact</a>
+			</nav>
+			</div>
+
+		<main class="wrapper">
+			<div class="row cf">
+				<div class="twothirds">
+				<h2> Welcome to LegoDB</h2>
+				<p>Welcome to the Lego database for Lego enthusiasts around the world. Here you can search Lego sets and parts to make your Lego collection complete. 
+				</div>
+
+				<div class="onethird">
+				<h3>Top 10 Searches</h3>
 				<?php
-					include "php/form.php";
-				?>
-
-				<br>
-				<nav>
-					<a href="index.php">Home</a> - 
-					<a href="mess.php">Guestbook</a> - 
-            		<a href="info.php">Contact</a>
-				</nav>
-				
-				</main>
-				<main class="wrapper">
-					<div class="row cf">
-						<div class="twothirds">
-						<h2> Welcome to LegoDB</h2>
-						<p>Welcome to the Lego database for Lego enthusiasts around the world. Here you can search Lego sets and parts to make your Lego collection complete. 
-						</div>
-
-						<div class="onethird">
-						<h3>Top 10 Searches</h3>
-						<?php
-        				displayResults();
-    			?>		</div>
-					</div>
-				</main>
+				displayResults();
+		?>		</div>
+			</div>
+		</main>
 
 			</div>
 		</div>
