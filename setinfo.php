@@ -31,7 +31,8 @@ include "templates/header.php";
 								JOIN sets
 								ON inventory.SetID=sets.SetID
 								WHERE 1
-								AND inventory.SetID='$search'");
+								AND inventory.SetID='$search'
+								AND inventory.itemtypeID!='G'");
 			
 			$setassoc = mysql_fetch_assoc($setquery);
 
