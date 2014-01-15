@@ -47,6 +47,8 @@ include "templates/header.php";
 				}
 				echo "<br>";
 
+				echo "<h3>You can find " . $setassoc["Partname"] . " in following sets </h3>";
+
 			//vilka sets som parten ingår i
 			$x = query("SELECT sets.Setname, sets.SetID, sets.Year, categories.Categoryname
 						FROM inventory 

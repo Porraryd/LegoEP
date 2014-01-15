@@ -1,6 +1,7 @@
 <?php
 function load_image($value, $colorID)
 {
+    //itemTypeID, itemID, colorID, has_gif, has_jpg, has_largegif, has_largejpg
     $pic = query("SELECT * 
                 FROM  `images` 
                 WHERE itemID='$value'
@@ -38,6 +39,7 @@ function load_image($value, $colorID)
         }
         else
         {
+            //$url = 'http://www.bricklink.com'  . '/S/' . $pics[6] . '.jpg';
             $url = "images/lego_small.png";
         }
     }

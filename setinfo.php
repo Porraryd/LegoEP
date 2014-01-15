@@ -44,6 +44,8 @@ include "templates/header.php";
 				echo "Amount of parts: " . $setassoc["Alla"] . "<br>";
 				echo "Amount of unique parts: " . $setassoc["Unika"];
 
+				echo "<h3>The Set " . $setassoc["Setname"] . " contains  </h3>";
+
 
 			$x = query("SELECT inventory.Quantity, inventory.itemTypeID, minifigs.Minifigname as Partname, minifigs.minifigID as PartID, colors.colorID, colors.Colorname
 						FROM inventory 
