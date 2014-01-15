@@ -6,6 +6,7 @@ include "templates/header.php";
 			<?php
 			include 'php/db_connect.php';
 			include 'php/display.php';
+			include 'php/pagination.php';
 
 			//connect till databasen
 			connect('lego');
@@ -15,6 +16,15 @@ include "templates/header.php";
 				$search = $_GET["SetID"];
 			else
 				echo "Error occured. No ID supplied.";
+
+			//Check page and set to 1 if not found
+			$ITEMS_PER_PAGE = 20;
+			if (isset($_GET["page"])){
+				$page = $_GET["page"];
+			}else{
+				$page = 1;
+			}
+			$start_from = ($page-1)*$ITEMS_PER_PAGE;
 
 			$setquery = query("SELECT COUNT(inventory.itemID) AS Unika, SUM(inventory.Quantity) AS Alla , sets.*
 								FROM inventory
@@ -45,11 +55,14 @@ include "templates/header.php";
 						WHERE 1
 						AND sets.SetID='$search'
 						ORDER BY `inventory`.`Quantity`  DESC 
-						LIMIT 100");
+						LIMIT $start_from, $ITEMS_PER_PAGE");
 
 			//Kontroll att resultat hittades
 			if(mysql_num_rows($x) > 0){
 				display_part_table($x);
+
+				$link = "setinfo.php?SetID=" . $search;
+				showPagination($setassoc["Unika"], $page, $ITEMS_PER_PAGE, $link);
 
 				mysql_free_result($x);
 						

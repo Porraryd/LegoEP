@@ -6,7 +6,7 @@ include "templates/header.php";
 			<?php
 			include 'php/db_connect.php';
 			include 'php/display.php';
-
+			include 'php/pagination.php';
 			//connect till databasen
 			connect('lego');
 
@@ -74,7 +74,8 @@ include "templates/header.php";
 			if(mysql_num_rows($x) > 0){
 				//funktion som visar resultatet från sökningen som en tabell
 				display_set_table($x);
-
+				$link = "partinfo.php?PartID=" . $search;
+				showPagination($totalcount, $page, $ITEMS_PER_PAGE, $link);
 				//PAGINATION
 				echo '<div class="pagination">';
 				if (($start_from+20) < $totalcount)
