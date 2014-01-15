@@ -27,20 +27,24 @@
 
 				<br>
 				<nav>
-					<a href="home.php">Home</a> - 
+					<a href="index.php">Home</a> - 
 					<a href="mess.php">Guestbook</a> - 
-            		<a href="info.php">Contact/info</a>
+            		<a href="info.php">Contact</a>
 				</nav>
 				
 				</main>
 				<main class="wrapper">
 					<div class="row cf">
-				<h2> Welcome to LegoDB</h2>
-				<p>Welcome to the Lego database for Lego enthusiasts around the world. Here you can search Lego sets and parts to make your Lego collection complete. 
-				<h3>  The Top 10 Searches</h3>
-				<?php
-        		displayResults();
-    		?>
+						<div class="twothirds">
+						<h2> Welcome to LegoDB</h2>
+						<p>Welcome to the Lego database for Lego enthusiasts around the world. Here you can search Lego sets and parts to make your Lego collection complete. 
+						</div>
+
+						<div class="onethird">
+						<h3>Top 10 Searches</h3>
+						<?php
+        				displayResults();
+    			?>		</div>
 					</div>
 				</main>
 
