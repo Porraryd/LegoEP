@@ -1,4 +1,5 @@
 $(document).ready(function() {
+        
         // Tooltip only Text
         $('.masterTooltip').hover(function(){
                 // Hover over code

@@ -6,7 +6,7 @@
 
 		<link type="text/css" rel="stylesheet" href="css/normalize.css"></link>
 		<link type="text/css" rel="stylesheet" href="css/style.css"></link>
-		<link type="text/css" rel="stylesheet" href="guestbookstyle.css"></link>
+		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,800' rel='stylesheet' type='text/css'>
 		<script src="resources/jquery-2.0.3.js"></script>
 		<script src="resources/typeahead.js"></script>
 		<script src="javascript/script.js"></script>

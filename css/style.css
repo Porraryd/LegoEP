@@ -1,6 +1,6 @@
 body {
 	background-color: #00a01a;
-	font-family: 'Myriad Pro','Arial', sans-serif;
+	font-family: 'Open Sans','Myriad Pro','helvetica', serif; 
 	font-size: 12pt;
 	text-align: justify;
 }
@@ -51,10 +51,6 @@ footer {
 	background-color: white;
 	border-radius: 10px;
 }
-}
-table {
-	display: table;
-}
 
 .masterTooltip{
 	padding: 3px;
@@ -85,13 +81,6 @@ table {
 	margin-bottom: 20px;
 }
 
-.onehalf {
-	float: left;
-	width: 45%;
-	margin-right: 3%;
-	padding: 1%;
-}
-
 .onethird {
 	float: left;
 	width: 28%;
@@ -103,11 +92,6 @@ table {
 	float: left;
 	width: 61%;
 	margin-right: 3%;
-	padding: 1%;
-}
-
-.threethirds {
-	width: 94%;
 	padding: 1%;
 }
 
@@ -230,6 +214,7 @@ table {
 }
 .tooltip {
 	display:none;
+	max-width: 350px;
 	position:absolute;
 	border:1px solid #333;
 	background-color:#fff;
