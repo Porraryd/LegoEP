@@ -45,7 +45,7 @@ include "templates/header.php";
 				echo "Amount of unique parts: " . $setassoc["Alla"];
 
 
-			$x = query("SELECT inventory.Quantity, inventory.itemTypeID, minifigs.Minifigname, minifigs.minifigID, colors.colorID, colors.Colorname
+			$x = query("SELECT inventory.Quantity, inventory.itemTypeID, minifigs.Minifigname as Partname, minifigs.minifigID as PartID, colors.colorID, colors.Colorname
 						FROM inventory 
 						JOIN colors
 						ON inventory.colorID = colors.ColorID 
