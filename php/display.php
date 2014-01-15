@@ -66,7 +66,7 @@
 
           		echo '<br><span class="list_text">ID: ' . $rest["PartID"] . '</span><br>';
 
-          		echo '<span class="list_text">'
+          		echo '<span class="list_text">';
           		if (isset ($rest["Colorname"]))
           			echo 'Color: ' . $rest["Colorname"];
           		echo '</span>';

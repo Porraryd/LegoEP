@@ -94,8 +94,7 @@ include "templates/header.php";
 				display_set_table($x);
 				$link = "partinfo.php?PartID=" . $search;
 				showPagination($totalcount, $page, $ITEMS_PER_PAGE, $link);
-		
-		echo '</div>';
+
 				mysql_free_result($x);
 						
 			}
