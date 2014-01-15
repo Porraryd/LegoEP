@@ -1,6 +1,0 @@
-SELECT images.*, inventory.SetID 
-                FROM  images
-                JOIN inventory
-                ON images.itemTypeID=inventory.itemtypeID
-                WHERE images.itemID='$value'
-                AND images.colorID='$colorID'
