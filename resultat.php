@@ -19,9 +19,6 @@ include 'php/display.php';
 			//trimma sökningen från whitespaces
 			$tsearch = trim($search);
 
-			//lagra trimmade sökningen i array(vid sökning pmed flera ord)
-			$trimmed_array = explode(" ",$tsearch);
-
 			//Felkontroller (som borde stoppas av javascript, men skadar inte att kolla här också)
 			//Om det saknas sökning
 			if ($tsearch == "") {
@@ -76,6 +73,9 @@ include 'php/display.php';
 		echo '<p>Your search <em>' . $search . '</em> did not give any result..<p>';
 	}else{
 		echo '<p>Your search <em>' . $search . '</em> gave ' . $totalcount . ' results.<p>';
+	if( isset ($resultmsg)){
+	    echo $resultmsg;
+	}else{
 		
 		if ($type == 'Sets')
 			display_set_table($x);
@@ -87,6 +87,7 @@ include 'php/display.php';
 		showPagination($totalcount, $page, $ITEMS_PER_PAGE, $link);
 
 		mysql_free_result($x);
+	}
 	}
 	
 	?>
