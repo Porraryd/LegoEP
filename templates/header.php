@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="utf-8" />
-		<title>Projekt EP!</title>
+		<title>LegoDB - the Lego Database</title>
 
 		<link type="text/css" rel="stylesheet" href="css/normalize.css"></link>
 		<link type="text/css" rel="stylesheet" href="css/style.css"></link>
@@ -26,7 +26,7 @@
 				<nav>
 					<a href="home.php">Home</a> -
 					<a href="mess.php">Guestbook</a> -
-            		<a href="info.php">Contact/info</a>
+            		<a href="info.php">Contact</a>
 				</nav>
 				
 			</header>

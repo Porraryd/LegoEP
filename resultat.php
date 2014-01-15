@@ -1,13 +1,14 @@
 <?php
+//Includes
 include "templates/header.php";
 include "php/search_log.php";
+include 'php/pagination.php';
+include 'php/db_connect.php';
+include 'php/display.php';
 ?>
 	<main class="wrapper">
 		<div class="row cf">
 			<?php
-			include 'php/db_connect.php';
-			include 'php/display.php';
-
 			//connect till databasen
 			connect('lego');
 
@@ -21,44 +22,15 @@ include "php/search_log.php";
 			//lagra trimmade sökningen i array(vid sökning pmed flera ord)
 			$trimmed_array = explode(" ",$tsearch);
 
+			//Felkontroller (som borde stoppas av javascript, men skadar inte att kolla här också)
 			//Om det saknas sökning
 			if ($tsearch == "") {
 				$resultmsg =  "<p>Search Error</p><p>Please enter a search...</p>" ;
 			}
-
 			// check for a search parameter
 			if (!isset($search)){
 				$resultmsg =  "<p>Search Error</p><p>We don't seem to have a search parameter! </p>" ;
 			}
-
-			// val med tabell
-			//ANvänds inte någonstans
-			$keys = array('Sets' => 'sets',
-					  	  'Parts' => 'parts');
-
-			//Leta reda på rätt tabell
-			//används inte någonstans
-			foreach ($keys as $key => $value) {
-				if ($type == $key){
-					$tablename = $value;
-				}
-			}
-			//////////////////////////////////////////////////////////////
-			//test lagra setnamn som json
-			$result = query("SELECT DISTINCT Setname FROM sets");
-			$data = array();
-			while($row = mysql_fetch_assoc($result)){
-				$data [] = array($row['Setname']
-					//'Setname' => $row['Setname'],
-					//'SetID' => $row['SetID']
-					);
-			}
-
-			$json_data = json_encode($data);
-			file_put_contents('Setnames.json', $json_data);
-
-
-			///////////////////////////////////////////////////////////////
 
 	//Check page
 	$ITEMS_PER_PAGE = 20;
@@ -69,25 +41,21 @@ include "php/search_log.php";
 	}
 	$start_from = ($page-1)*$ITEMS_PER_PAGE;
 
- 	//Skickar frågan till connect_db 
-	/*$x = query("SELECT s.Setname, s.SetID, s.Year
-				FROM sets as s
-				WHERE 1
-				AND s.$type='{$search}' 
-				LIMIT $start_from, $ITEMS_PER_PAGE");*/
-
-	if ($tablename == 'sets'){
+	//=======
+	//QUERIES
+	//=======
+	if ($type == 'Sets'){
 		//Main query
-		$x = query("SELECT sets.Setname, sets.SetID, sets.Year, categories.Categoryname FROM $tablename 
+		$x = query("SELECT sets.Setname, sets.SetID, sets.Year, categories.Categoryname FROM sets
 			JOIN categories
 			ON categories.CatID = sets.CatID 
 			WHERE 1 AND (Setname LIKE '%{$search}%' OR SetID LIKE '%{$search}%') LIMIT $start_from, $ITEMS_PER_PAGE ");
 		
 		//Count query
-		$result = mysql_query("SELECT COUNT(*) FROM $tablename WHERE 1 AND (Setname LIKE '%{$search}%' OR SetID LIKE '%{$search}%')");		
-	}else if ($tablename == 'parts'){
+		$result = mysql_query("SELECT COUNT(*) FROM sets WHERE 1 AND (Setname LIKE '%{$search}%' OR SetID LIKE '%{$search}%')");		
+	}else if ($type == 'Parts'){
 		//Main query
-		$x = query("SELECT DISTINCT parts.Partname, parts.PartID, images.colorID FROM $tablename
+		$x = query("SELECT DISTINCT parts.Partname, parts.PartID, images.colorID FROM parts
 			JOIN images 
 			ON parts.partID = images.itemID
 			WHERE 1 AND (Partname LIKE '%{$search}%' OR PartID LIKE '%{$search}%')
@@ -96,7 +64,7 @@ include "php/search_log.php";
 			LIMIT $start_from, $ITEMS_PER_PAGE ");
 		
 		//Count query
-		$result = mysql_query("SELECT COUNT(*) FROM $tablename WHERE 1 AND (Partname LIKE '%{$search}%' OR PartID LIKE '%{$search}%')");	
+		$result = mysql_query("SELECT COUNT(*) FROM parts WHERE 1 AND (Partname LIKE '%{$search}%' OR PartID LIKE '%{$search}%')");	
 	}
 
 	//get the total amount of results
@@ -109,7 +77,7 @@ include "php/search_log.php";
 	}else{
 		echo '<p>Your search <em>' . $search . '</em> gave ' . $totalcount . ' results.<p>';
 		
-		if ($tablename == 'sets')
+		if ($type == 'Sets')
 			display_set_table($x);
 		else
 			display_part_table($x);
@@ -117,76 +85,14 @@ include "php/search_log.php";
 		//Show pagination
 		$link = "resultat.php?search=" . $search . "&type=" . $type;
 		showPagination($totalcount, $page, $ITEMS_PER_PAGE, $link);
+
+		mysql_free_result($x);
 	}
-	mysql_free_result($x);
+	
 	?>
 	</div>
 	</main>
 <?php
 include "templates/footer.php";
 ?>
-<script>
-
-$('.search').typeahead({
-  	name: 'Setnames',
-  	prefetch: 'countries.json',                                   
-  
- 	//local: ["Town Mini-Figures","Space Mini-Figures","Castle Mini Figures","Living Room","Farm Set Animals","Playhouse","Farm"]
-  	//limit: 10
-  /*local: [
-          "Alabama",
-          "Alaska",
-          "Arizona",
-          "Arkansas",
-          "California",
-          "Colorado",
-          "Connecticut",
-          "Delaware",
-          "Florida",
-          "Georgia",
-          "Hawaii",
-          "Idaho",
-          "Illinois",
-          "Indiana",
-          "Iowa",
-          "Kansas",
-          "Kentucky",
-          "Louisiana",
-          "Maine",
-          "Maryland",
-          "Massachusetts",
-          "Michigan",
-          "Minnesota",
-          "Mississippi",
-          "Missouri",
-          "Montana",
-          "Nebraska",
-          "Nevada",
-          "New Hampshire",
-          "New Jersey",
-          "New Mexico",
-          "New York",
-          "North Carolina",
-          "North Dakota",
-          "Ohio",
-          "Oklahoma",
-          "Oregon",
-          "Pennsylvania",
-          "Rhode Island",
-          "South Carolina",
-          "South Dakota",
-          "Tennessee",
-          "Texas",
-          "Utah",
-          "Vermont",
-          "Virginia",
-          "Washington",
-          "West Virginia",
-          "Wisconsin",
-          "Wyoming"
-        ]*/
-});
-
-
-</script>
 

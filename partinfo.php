@@ -23,6 +23,8 @@ include "templates/header.php";
 				$page = 1;
 			}
 			$start_from = ($page-1)*$ITEMS_PER_PAGE;
+
+			
 			//info om parten
 			$setquery = query("SELECT DISTINCT colors.Colorname, parts.Partname, parts.PartID
 							   FROM inventory
@@ -76,32 +78,6 @@ include "templates/header.php";
 				display_set_table($x);
 				$link = "partinfo.php?PartID=" . $search;
 				showPagination($totalcount, $page, $ITEMS_PER_PAGE, $link);
-				//PAGINATION
-				echo '<div class="pagination">';
-				if (($start_from+20) < $totalcount)
-					echo 'Showing ' . ($start_from+1) . ' to ' . ($start_from+20) . ' of ' . $totalcount . ' results<br>';
-
-				else
-					echo 'Showing ' . ($start_from+1) . ' to ' . $totalcount . ' of ' . $totalcount . ' results<br>';
-
-				//Räknar hur många sidor det ska vara totalt
-				$total_pages = ceil($totalcount / 20);
-	
-				//Loop som skapar länkar till varje sida. 
-				if (($page-9) > 1)
-					echo "<a href='partinfo.php?PartID=" . $search . "&page=1'>" . "<< " . "</a> "; 
-		
-				
-				for ($i=($page-9); $i<=$total_pages; $i++){
-					if ($i == ($page+10))
-					{
-						echo "<a href='partinfo.php?PartID=" . $search . "&page=" . $total_pages . "'>" . " >>" . "</a> "; 
-						break;
-					}
-					if ($i == $page)
-						echo $i . " ";
-					else if ($i > 0)
-						echo "<a href='partinfo.php?PartID=" . $search . "&page=" . $i . "'>" . $i . "</a> "; 
 		}
 		echo '</div>';
 				mysql_free_result($x);
