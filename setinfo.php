@@ -44,31 +44,7 @@ include "templates/header.php";
 				echo "Amount of unique parts: " . $setassoc["Alla"];
 
 
-			$x = query("SELECT parts.Partname, parts.PartID, inventory.Quantity, colors.colorID, colors.Colorname
-						FROM inventory 
-						JOIN colors
-						ON inventory.colorID = colors.ColorID 
-						JOIN sets
-						ON inventory.SetID = sets.SetID
-						JOIN parts
-						ON inventory.ItemID = parts.PartID
-						WHERE 1
-						AND sets.SetID='$search'
-						ORDER BY `inventory`.`Quantity`  DESC 
-						LIMIT 100");
-			///////////////////////////////////////////////////////
-						/*SELECT inventory.Quantity, inventory.itemTypeID, parts.Partname, parts.PartID, colors.colorID, colors.Colorname
-						FROM inventory 
-						JOIN colors
-						ON inventory.colorID = colors.ColorID 
-						JOIN sets
-						ON inventory.SetID = sets.SetID
-						JOIN parts
-						ON inventory.ItemID = parts.PartID
-						WHERE 1
-						AND sets.SetID='7662-1'
-						UNION ALL
-						SELECT inventory.Quantity, inventory.itemTypeID, minifigs.Minifigname, minifigs.minifigID, colors.colorID, colors.Colorname
+			$x = query("SELECT inventory.Quantity, inventory.itemTypeID, minifigs.Minifigname, minifigs.minifigID, colors.colorID, colors.Colorname
 						FROM inventory 
 						JOIN colors
 						ON inventory.colorID = colors.ColorID 
@@ -77,12 +53,20 @@ include "templates/header.php";
 						JOIN minifigs
 						ON inventory.ItemID = minifigs.MinifigID
 						WHERE 1
-						AND inventory.SetID='7662-1'*/
-						///////////////////////////////////////////////////////////////////
+						AND inventory.SetID='$search'
+						UNION ALL
+						SELECT inventory.Quantity, inventory.itemTypeID, parts.Partname, parts.PartID, colors.colorID, colors.Colorname
+						FROM inventory 
+						JOIN colors
+						ON inventory.colorID = colors.ColorID 
+						JOIN sets
+						ON inventory.SetID = sets.SetID
+						JOIN parts
+						ON inventory.ItemID = parts.PartID
+						WHERE 1
+						AND sets.SetID='$search'");
 
-
-=======
-						LIMIT $start_from, $ITEMS_PER_PAGE");
+						
 
 			//Kontroll att resultat hittades
 			if(mysql_num_rows($x) > 0){

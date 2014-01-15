@@ -1,6 +1,9 @@
+function showResults(data) {
+    setTimeout(fetchData, 1000);
+}
 
 function fetchData() {
-    $.getJSON('../php/search_log.json', showResults);
+    $.getJSON('../LegoEPny/resources/search_log.json', showResults);
 }
 
 fetchData();
