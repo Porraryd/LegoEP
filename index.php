@@ -5,8 +5,8 @@
 		<meta charset="utf-8" />
 		<title>LegoDB - The Lego Database</title>
 
-		<link type="text/css" rel="stylesheet" href="css/normalize.css"></link>
-		<link type="text/css" rel="stylesheet" href="css/style.css"></link>
+		<link type="text/css" rel="stylesheet" href="css/normalize.css">
+		<link type="text/css" rel="stylesheet" href="css/style.css">
 		<link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,400,800' rel='stylesheet' type='text/css'>
 		<script src="resources/jquery-2.0.3.js"></script>
 		<script src="resources/typeahead.js"></script>
@@ -19,7 +19,7 @@
 	</head>
 	<body>
 		<div id="startpage">
-			<a href="index.php"><img src="images/logo.png" alt"LEGODB"></a>
+			<a href="index.php"><img src="images/logo.png" alt="LEGODB"></a>
 			<?php
 				include "php/form.php";
 			?>
@@ -46,9 +46,5 @@
 		?>		</div>
 			</div>
 		</main>
-
-			</div>
-		</div>
 	</body>
 </html>
-

@@ -19,21 +19,21 @@ function showPagination($total, $currentPage, $perPage, $link)
 		//Creates links to the different pages. Show maximum of 9 pages on each side. 
 		if (($currentPage-9) > 1)
 			//Link to the first page
-			echo "<a href='" . $link . "&page=1'>" . "<< " . "</a> "; 
+			echo "<a href='" . $link . "&amp;page=1'>" . "<< " . "</a> "; 
 		
 		for ($i=($currentPage-9); $i<=$total_pages; $i++){
 
 			if ($i == ($currentPage+10))
 			{
 				//Link to the last page if it was not reached in the loop
-				echo "<a href='" . $link . "&page=" . $total_pages . "'>" . " >>" . "</a> "; 
+				echo "<a href='" . $link . "&amp;page=" . $total_pages . "'>" . " >>" . "</a> "; 
 				break;
 			}
 			//Do not make a link to the page we're on. 
 			if ($i == $currentPage)
 				echo $i . " ";
 			else if ($i > 0)
-				echo "<a href='" . $link . "&page=" . $i . "'>" . $i . "</a> "; 
+				echo "<a href='" . $link . "&amp;page=" . $i . "'>" . $i . "</a> "; 
 		}
 		echo '</div>';
 	}

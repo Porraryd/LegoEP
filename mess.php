@@ -8,9 +8,7 @@ include "templates/header.php";
 		<h2>Guestbook</h2>
 		<p>Please write anything you want in our guestbook! Feedback on the site should be written in the contact form under "Contact". </p>
 		<br>
-	<div id="sendbox">
 	<?php showForm(); ?>
-	</div>
 	<p>
 	<?php showGuestbook();?>
 	</div>

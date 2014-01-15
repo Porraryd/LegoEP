@@ -83,7 +83,7 @@ include 'php/display.php';
 			display_part_table($x);
 
 		//Show pagination
-		$link = "resultat.php?search=" . $search . "&type=" . $type;
+		$link = "resultat.php?search=" . $search . "&amp;type=" . $type;
 		showPagination($totalcount, $page, $ITEMS_PER_PAGE, $link);
 
 		mysql_free_result($x);

@@ -118,7 +118,7 @@ footer {
 }
 
 /* GÄSTBOKEN */
-#guestbook_entry{
+.guestbook_entry{
 	margin-bottom: 10px;
 	margin-top: 5px;
 	padding: 10px;
@@ -153,7 +153,7 @@ footer {
 .gb_textarea:focus 
 {
     outline: none !important;
-    border:1px solid #;
+    border:1px solid;
     border-radius: 10px;
     border-color: #00a01a;
     /*box-shadow: 0 0 10px #00a01a;*/
@@ -165,10 +165,9 @@ footer {
 	margin-top: 5px;
 	min-height: 60px;
 	padding: 10px;
-	border: 1px;
-	border-style: solid; 
-	border-color: #ccc;	
+	border: 1px solid; 
 	border-radius: 10px;
+	border-color: #ccc;	
 }
 
 .list_item:hover{
@@ -215,7 +214,7 @@ footer {
 	border-radius:5px;
 	padding:10px;
 	color:#000;
-	font-size:12px Myriad Pro;
+	font-family: 'Open Sans','helvetica', serif;
 }
 
 table, th, td {

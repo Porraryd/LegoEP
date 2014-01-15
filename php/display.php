@@ -15,10 +15,10 @@
 
           		
           		echo '<div class="list_item">';
-	        	echo "<a href='$url2' class='list_picture'><img src='$url1'/></a>";
+	        	echo "<a href='$url2' class='list_picture'><img src='$url1' alt='Image'></a>";
           		echo "<a href='setinfo.php?SetID=" . $rest["SetID"] . "'><span class='list_title'>" . $rest["Setname"] . '</span></a>
           		     <span class="list_year">' . $rest["Year"] . '</span><br>'
-          		 . '<span class="list_text">ID: ' . $rest["SetID"] . '<br>Category: ' . $rest["Categoryname"];
+          		 . '<span class="list_text">ID: ' . $rest["SetID"] . '<br>Category: ' . $rest["Categoryname"] . '</span>';
 
           		 //Hover link
           		echo "<a href='setinfo.php?SetID=" . $rest["SetID"] . "'><span class='list_hoverlink'></span></a>";
@@ -42,7 +42,7 @@
           		list($url1, $url2) = load_image($rest["PartID"], $colorID);
           		
           		echo '<div class="list_item">';
-	        	echo "<a href='$url2' class='list_picture'><img src='$url1'/></a>";
+	        	echo "<a href='$url2' class='list_picture'><img src='$url1' alt='Image'></a>";
           		echo "<a href='partinfo.php?PartID=" . $rest["PartID"] . "'><span class='list_title'>" . $rest["Partname"] . '</span></a>';
 
           		if (isset ($rest["Quantity"]))
@@ -64,13 +64,14 @@
           			echo 'Type: Gear <br>';
           		}*/
 
-          		echo '<br><span class="list_text">ID: ' . $rest["PartID"] . '<br>';
+          		echo '<br><span class="list_text">ID: ' . $rest["PartID"] . '</span><br>';
 
+          		echo '<span class="list_text">'
           		if (isset ($rest["Colorname"]))
           			echo 'Color: ' . $rest["Colorname"];
-
+          		echo '</span>';
           		//Hover link
-          		echo "<a href='partinfo.php?PartID=" . $rest["PartID"] . "'><span class='list_hoverlink'></span></a>";
+          		echo "<a href='partinfo.php?PartID=" . $rest["PartID"] . "'><span class='list_hoverlink'> </span></a>";
           		echo '</div>';
 	           	
            	}

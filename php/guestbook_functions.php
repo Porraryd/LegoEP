@@ -23,7 +23,7 @@ function showGuestbook() {
 $results = readResults();
  
 for($i = 0; $i < count($results); $i++) {
-		echo '<div id="guestbook_entry">';
+		echo '<div class="guestbook_entry">';
 		echo '<span class="list_title">' . $results[$i]['name'] . '</span>' . '<span class="list_year">' . $results[$i]['time'] . '</span><br>';
 		echo $results[$i]['message'];
 		echo '</div>';

@@ -19,13 +19,11 @@ include "php/contact_functions.php";
 					<div class="onethird">
 					<h2>Useful information</h2>
 					
-					<input class="masterTooltip" title="Sets contains two or more parts. You can search a set by a name or a number-combination" 
-					type="image" src="images/info2.png" value="Sets"> 
+					<img class="masterTooltip" title="Sets contains two or more parts. You can search a set by a name or a number-combination" src="images/info2.png"> 
 					
-					<input class="masterTooltip" title="Givas you a one specific part, you search parts by there number and/or letter combination" 
-					type="image" src="images/info1.png" value="Parts">
+					<img class="masterTooltip" title="Givas you a one specific part, you search parts by there number and/or letter combination" src="images/info1.png">
 					
-					<p/>*hover over the info-icons 
+					<p>*hover over the info-icons </p>
 					</div>
 
 				</div>
