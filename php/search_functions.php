@@ -18,8 +18,8 @@ function displayResults() {
     foreach ($results as $text => $searches) {
         if($i==10) break;
         echo '<li><span style="text:' . $text . ';">' 
-        . $text . '</span> has ' 
-        . $searches . ' searches</li>';
+        . $text . '</span>:  ' 
+        . $searches . ' searches.</li>';
         $i++;
     }
     echo '</ol>';

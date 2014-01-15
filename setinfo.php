@@ -67,7 +67,8 @@ include "templates/header.php";
 						JOIN parts
 						ON inventory.ItemID = parts.PartID
 						WHERE 1
-						AND sets.SetID='$search'");
+						AND sets.SetID='$search'
+						LIMIT $start_from, $ITEMS_PER_PAGE");
 
 						
 

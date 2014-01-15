@@ -1,6 +1,6 @@
 body {
 	background-color: #00a01a;
-	font-family: 'Open Sans','Myriad Pro','helvetica', serif; 
+	font-family: 'Open Sans','helvetica', serif; 
 	font-size: 12pt;
 	text-align: justify;
 }
@@ -11,13 +11,13 @@ margin-bottom: 0px;
 
 a:link {
 text-decoration: none;
-font-family: helvetica;
+font-family: 'Open Sans';
 color: #00a01a;
 }
 
 a:visited {
 text-decoration: none;
-font-family: helvetica;
+font-family: 'Open Sans';
 color: #00a01a;
 }
 
@@ -116,7 +116,7 @@ footer {
 .Absolute-Center {
 	max-width: 800px;
 	min-width: 200px;
-  height: 70%;
+  height: 80%;
   margin: auto;
   position: absolute;
   top: 0; left: 0; bottom: 0; right: 0;

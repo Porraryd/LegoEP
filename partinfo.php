@@ -26,25 +26,41 @@ include "templates/header.php";
 
 			
 			//info om parten
-			$setquery = query("SELECT DISTINCT colors.Colorname, parts.Partname, parts.PartID
+			$setquery = query("SELECT DISTINCT inventory.itemTypeID, colors.Colorname, parts.Partname, parts.PartID
 							   FROM inventory
 							   JOIN parts
 							   ON inventory.itemID = parts.partID
 							   JOIN colors
 							   ON inventory.colorID = colors.colorID 
 							   WHERE 1 
+							   AND inventory.itemID = '$search'
+							   UNION ALL 
+							   SELECT DISTINCT inventory.itemTypeID, colors.Colorname, minifigs.Minifigname AS Partname, minifigs.MinifigID AS PartID
+							   FROM inventory
+							   JOIN minifigs
+							   ON inventory.itemID = minifigs.MinifigID
+							   JOIN colors
+							   ON inventory.colorID = colors.colorID 
+							   WHERE 1 
 							   AND inventory.itemID = '$search'");
 			
+
 			$setassoc = mysql_fetch_assoc($setquery);
 
 				echo "<h2>" . $setassoc["Partname"] . "</h2>";
 				list($url1, $url2) = load_image($setassoc["PartID"], 1);
 				echo "<img src='$url2' alt='No image found.' /><br>"; 
 				echo "ID: " . $setassoc["PartID"] . "<br>";
-				echo "Part available in: ";
-				while($color = mysql_fetch_assoc($setquery)){
-					echo $color['Colorname'] . ' ';
+				if($setassoc["itemTypeID"] = 'P')
+				{
+					$colors = ""; 
+					$nmbrofcolors = mysql_num_rows($setquery);
+					while($color = mysql_fetch_assoc($setquery)){
+						$colors .= $color['Colorname'] . ', ';
+					}
+					echo "Part available in: <span title='$colors' class='masterTooltip'>" . $nmbrofcolors . " colors. Hover mouse to see the specific colors.</span>";
 				}
+					
 				echo "<br>";
 
 				echo "<h3>You can find " . $setassoc["Partname"] . " in following sets </h3>";
@@ -56,10 +72,8 @@ include "templates/header.php";
 						ON inventory.SetID = sets.SetID
 						JOIN categories
 						ON categories.CatID = sets.CatID 
-						JOIN parts
-						ON inventory.ItemID = parts.PartID
 						WHERE 1
-						AND parts.PartID='$search'
+						AND inventory.itemID='$search'
 						ORDER BY `inventory`.`Quantity`  DESC 
 						LIMIT $start_from, $ITEMS_PER_PAGE");
 
