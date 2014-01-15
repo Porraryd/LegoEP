@@ -24,7 +24,7 @@
 				?>
 				<br>
 				<nav>
-					<a href="home.php">Home</a> -
+					<a href="index.php">Home</a> -
 					<a href="mess.php">Guestbook</a> -
             		<a href="info.php">Contact</a>
 				</nav>

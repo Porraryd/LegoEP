@@ -48,6 +48,22 @@
           		if (isset ($rest["Quantity"]))
           			echo "<span class='list_year'>Quantity:  " . $rest["Quantity"] . "</span>";
 
+
+          		
+
+          		if (isset($rest["itemTypeID"]) && $rest["itemTypeID"] == 'M')
+          		{
+          			echo '<br>Minifig';
+          		}
+          		/*else if (isset($rest["itemTypeID"]) && $rest["itemTypeID"] == 'P')
+          		{
+          			echo 'Type: Part <br>';
+          		}
+          		else if (isset($rest["itemTypeID"]) && $rest["itemTypeID"] == 'G')
+          		{
+          			echo 'Type: Gear <br>';
+          		}*/
+
           		echo '<br><span class="list_text">ID: ' . $rest["PartID"] . '<br>';
 
           		if (isset ($rest["Colorname"]))

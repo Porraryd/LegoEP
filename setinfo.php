@@ -41,8 +41,8 @@ include "templates/header.php";
 				echo "<img src='$url2' alt='No image found.' /><br>"; 
 				echo "ID: " . $setassoc["SetID"] . "<br>";
 				echo "Released: " . $setassoc["Year"] . "<br>";
-				echo "Amount of parts: " . $setassoc["Unika"] . "<br>";
-				echo "Amount of unique parts: " . $setassoc["Alla"];
+				echo "Amount of parts: " . $setassoc["Alla"] . "<br>";
+				echo "Amount of unique parts: " . $setassoc["Unika"];
 
 
 			$x = query("SELECT inventory.Quantity, inventory.itemTypeID, minifigs.Minifigname as Partname, minifigs.minifigID as PartID, colors.colorID, colors.Colorname

@@ -97,7 +97,6 @@ table {
 	width: 28%;
 	margin-right: 3%;
 	padding: 1%;
-	background: #eee;
 }
 
 .twothirds {
@@ -105,11 +104,9 @@ table {
 	width: 61%;
 	margin-right: 3%;
 	padding: 1%;
-	background: #eee;
 }
 
 .threethirds {
-	background:#fff;
 	width: 94%;
 	padding: 1%;
 }
@@ -133,7 +130,7 @@ table {
 }
 
 .Absolute-Center {
-	max-width: 600px;
+	max-width: 800px;
 	min-width: 200px;
   height: 70%;
   margin: auto;
@@ -219,13 +216,13 @@ table {
 }
 
 .list_title{
-	font-size: 14pt;
+	font-size: 12pt;
 	font-weight: bold; 
 	padding-bottom: 25px;	
 }
 
 .list_year{
-	font-size: 14pt;
+	font-size: 12pt;
 	float: right;
 	font-style: italic;
 	color: #aaa; 
