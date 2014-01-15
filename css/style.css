@@ -121,9 +121,9 @@ table {
 
 /* FÖR STARTSIDAN ONLY */
 #startpage {
+	border: 1px solid hsl(100, 0%, 80%);
 	background-color: white;
 	text-align: center;
-	border: 1px solid #000;
 	border-radius: 10px;
 	padding-bottom: 15px;
 }
@@ -135,7 +135,7 @@ table {
 .Absolute-Center {
 	max-width: 600px;
 	min-width: 200px;
-  height: 50%;
+  height: 70%;
   margin: auto;
   position: absolute;
   top: 0; left: 0; bottom: 0; right: 0;
