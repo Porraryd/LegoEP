@@ -1,4 +1,4 @@
-LegoEP
+TNMK30 - Lego website 
 ======
 
-Legoprojekt i EP
+Project made in 2013 in the course TNMK30 at Linköping University. Focus was on learning basic web development/design and database handling. 
